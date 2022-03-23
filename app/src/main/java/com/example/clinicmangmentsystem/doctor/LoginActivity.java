@@ -2,14 +2,12 @@ package com.example.clinicmangmentsystem.doctor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -20,55 +18,20 @@ public class LoginActivity extends AppCompatActivity {
 EditText password;
 boolean passwordvisable;
 TextView createaccdoctxt;
-Button login ;
-//
-ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
         password=findViewById(R.id.editTextTextPassword);
         createaccdoctxt=findViewById(R.id.createaccdoc);
-        login=findViewById(R.id.logindoc);
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this,DoctorActivity.class);
-                startActivity(i);
-            }
-        });
-
         createaccdoctxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog = new ProgressDialog(LoginActivity.this);
-                progressDialog.show();
-                progressDialog.setContentView(R.layout.progress_dialog);
-                progressDialog.getWindow().setBackgroundDrawableResource(
-
-                        android.R.color.transparent
-                );
-                Thread time = new Thread()
-                {
-                    @Override
-                    public void run() {
-                        try {
-                            sleep(2000);
-                            Intent i = new Intent(LoginActivity.this, SignupActivity.class);
-                            startActivity(i);
-                            progressDialog.dismiss();
-                            finish();
-                        }catch (InterruptedException e){
-                            e.printStackTrace();
-                        }
-                    }
-                };
-                time.start();
-
+                Intent i = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(i);
             }
         });
-
-             password.setOnTouchListener(new View.OnTouchListener() {
+        password.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                  final int Right =2;
@@ -92,7 +55,12 @@ ProgressDialog progressDialog;
                      password.setSelection(selection);
                      return true;
 
+
+
                      }
+
+
+
 
                  }
                 return false;
@@ -100,6 +68,4 @@ ProgressDialog progressDialog;
         });
 
     }
-
-
 }

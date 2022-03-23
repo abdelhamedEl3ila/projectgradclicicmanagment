@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".patient.MainActivity">
+    tools:context=".MainActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -15,7 +15,6 @@
         android:layout_weight="1"
         android:id="@+id/framlayoutpat"
         />
-    
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

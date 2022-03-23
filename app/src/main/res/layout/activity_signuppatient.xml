@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".patient.SignuppatientActivity">
-
+    <Button
+        android:id="@+id/selectpatphoto"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:background="@drawable/add_photobutton"
+        android:drawableTop="@drawable/add_photo"
+        android:paddingTop="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:text="add image"
+        android:textColor="@color/gray"
+        android:textAllCaps="false"
+        />
     <EditText
-        android:id="@+id/fristusername"
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:background="@drawable/customedittext"
@@ -18,19 +30,35 @@
         android:longClickable="false"
         android:elevation="6dp"
         android:ems="10"
-
         android:textColorHint="@color/gray"
 
-        android:hint="User Name "
+        android:hint="Frist name "
         android:drawablePadding="5dp"
         android:paddingStart="15sp"
         android:textSize="15sp"
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:textColor="@color/black"/>
 
     <EditText
-        android:id="@+id/emailpat"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:background="@drawable/customedittext"
+        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:paddingRight="15dp"
+        android:longClickable="false"
+        android:elevation="6dp"
+        android:ems="10"
+        android:hint="Last name"
+        android:drawablePadding="5dp"
+        android:textColorHint="@color/gray"
+
+        android:paddingStart="15sp"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:textColor="@color/black"/>
+    <EditText
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:background="@drawable/customedittext"
@@ -50,7 +78,6 @@
         android:layout_gravity="center"
         android:textColor="@color/black"/>
     <EditText
-        android:id="@+id/pasworduser"
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:background="@drawable/customedittext"
@@ -71,7 +98,6 @@
         android:layout_gravity="center"
         android:textColor="@color/black"/>
     <EditText
-        android:id="@+id/phonenumuser"
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:background="@drawable/customedittext"
@@ -90,8 +116,62 @@
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:textColor="@color/black"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        >
 
-    <!--    <TextView-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textSize="18sp"
+            android:textColor="#505050"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="25dp"
+
+            />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGrouppat"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:gravity="center_horizontal"
+            android:checkedButton="1"
+            >
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                android:id="@+id/checkBoxA"
+                android:button="@drawable/custom_checkbox"
+                android:textSize="17sp"
+                android:textColor="#6C6C6C"
+                android:paddingEnd="5dp"
+                android:paddingBottom="15dp"
+                android:onClick="onCheckboxClicked"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                android:layout_marginStart="15dp"
+                android:id="@+id/checkBoxB"
+                android:button="@drawable/custom_checkbox"
+                android:textSize="17sp"
+                android:paddingBottom="15dp"
+                android:textColor="#6C6C6C"
+                android:onClick="onCheckboxClicked"/>
+
+        </RadioGroup>
+    </LinearLayout>
+<!--    <TextView-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        android:text="Birth Day"-->
@@ -101,60 +181,8 @@
 <!--        />-->
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="Gender"
-            android:textColor="#505050"
-            android:textSize="18sp"
-
-            />
-
-        <RadioGroup
-            android:id="@+id/radioGrouppat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="10dp"
-            android:checkedButton="1"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <CheckBox
-                android:id="@+id/checkBoxA"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/custom_checkbox"
-                android:onClick="onCheckboxClicked"
-                android:paddingEnd="5dp"
-                android:paddingBottom="15dp"
-                android:text="Male"
-                android:textColor="#6C6C6C"
-                android:textSize="17sp" />
-
-            <CheckBox
-                android:id="@+id/checkBoxB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:button="@drawable/custom_checkbox"
-                android:onClick="onCheckboxClicked"
-                android:paddingBottom="15dp"
-                android:text="Female"
-                android:textColor="#6C6C6C"
-                android:textSize="17sp" />
-        </RadioGroup>
-    </LinearLayout>
     <Button
-
         android:id="@+id/nextpatientbtn"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
