@@ -11,6 +11,8 @@ import com.example.clinicmangmentsystem.patient.LoginActivity;
 
 public class SelectActivity extends AppCompatActivity {
 Button selectdoc ,selectpat;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

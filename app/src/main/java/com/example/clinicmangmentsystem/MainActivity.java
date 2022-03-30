@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 Fragment  fragment = null;
                 switch (item.getId()){
 
+
                     case 1:
                         fragment=new HomepatFragment();
                         break;
@@ -56,17 +57,13 @@ public class MainActivity extends AppCompatActivity {
        bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
            @Override
            public void onClickItem(MeowBottomNavigation.Model item) {
-               Toast.makeText(getApplicationContext()
-               ,"you clicked"+item.getId()
-               ,Toast.LENGTH_SHORT).show();
+
            }
        });
        bottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
            @Override
            public void onReselectItem(MeowBottomNavigation.Model item) {
-               Toast.makeText(getApplicationContext()
-               ,"you reselected"+item.getId()
-               ,Toast.LENGTH_SHORT).show();
+
            }
        });
 
