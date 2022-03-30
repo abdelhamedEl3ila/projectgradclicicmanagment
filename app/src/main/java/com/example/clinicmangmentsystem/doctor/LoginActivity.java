@@ -2,6 +2,7 @@ package com.example.clinicmangmentsystem.doctor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -18,17 +19,41 @@ public class LoginActivity extends AppCompatActivity {
 EditText password;
 boolean passwordvisable;
 TextView createaccdoctxt;
+ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
         password=findViewById(R.id.editTextTextPassword);
         createaccdoctxt=findViewById(R.id.createaccdoc);
+
         createaccdoctxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, SignupActivity.class);
-                startActivity(i);
+                progressDialog = new ProgressDialog(LoginActivity.this);
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.progress_dialog);
+                progressDialog.getWindow().setBackgroundDrawableResource(
+
+                        android.R.color.transparent
+                );
+                Thread time = new Thread()
+                {
+                    @Override
+                    public void run() {
+                        try {
+                            sleep(2000);
+                            Intent i = new Intent(LoginActivity.this, SignupActivity.class);
+                            startActivity(i);
+                            progressDialog.dismiss();
+                            finish();
+                        }catch (InterruptedException e){
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                time.start();
+
             }
         });
         password.setOnTouchListener(new View.OnTouchListener() {
@@ -55,12 +80,7 @@ TextView createaccdoctxt;
                      password.setSelection(selection);
                      return true;
 
-
-
                      }
-
-
-
 
                  }
                 return false;
@@ -68,4 +88,6 @@ TextView createaccdoctxt;
         });
 
     }
+
+
 }

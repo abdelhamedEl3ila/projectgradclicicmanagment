@@ -1,16 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-
+    android:orientation="vertical"
     tools:context=".patient.ActivitypatFragment">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:background="@color/secondcolor">
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationloading"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                app:lottie_rawRes="@raw/loadinganim"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"/>
+            <TextView
+                android:layout_width="206dp"
+                android:layout_height="68dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="35dp"
+                android:text="Schedule"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Activity" />
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        app:tabGravity="center"
+        app:tabIndicator="@drawable/tablayout"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorColor="@color/secondcolor"
+        app:tabIndicatorGravity="stretch"
+        app:tabMode="fixed"
 
-</FrameLayout>
+        app:tabSelectedTextColor="#ffffff"
+        app:tabTextColor="#B8B8B8">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All"
+
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clinic Visit" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Call Doctor" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/schedulepager"
+
+/>
+</LinearLayout>

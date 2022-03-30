@@ -31,20 +31,6 @@
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"/>
 
-
-
-
-<!--                <ImageView-->
-<!--                    android:layout_width="@dimen/_47sdp"-->
-<!--                    android:layout_height="@dimen/_38sdp"-->
-<!--                    android:src="@drawable/ic_status_health_svgrepo_com"-->
-<!--                    android:layout_marginStart="@dimen/_30sdp"-->
-<!--                    android:layout_marginTop="@dimen/_20sdp"-->
-
-
-
-<!--                     />-->
-
                 <TextView
                     android:layout_width="206dp"
                     android:layout_height="68dp"
@@ -56,7 +42,6 @@ System"
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:textStyle="bold"
-
                     />
 
 
