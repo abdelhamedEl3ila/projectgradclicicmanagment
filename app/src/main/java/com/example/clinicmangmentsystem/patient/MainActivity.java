@@ -1,4 +1,4 @@
-package com.example.clinicmangmentsystem;
+package com.example.clinicmangmentsystem.patient;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.example.clinicmangmentsystem.R;
 import com.example.clinicmangmentsystem.patient.ActivitypatFragment;
 import com.example.clinicmangmentsystem.patient.HomepatFragment;
 import com.example.clinicmangmentsystem.patient.ProfilepatFragment;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         //set notification count
 
         bottomNavigation.show(2,true);
+
        bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
            @Override
            public void onClickItem(MeowBottomNavigation.Model item) {

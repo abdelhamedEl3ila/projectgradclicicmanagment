@@ -9,6 +9,7 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -19,6 +20,8 @@ public class LoginActivity extends AppCompatActivity {
 EditText password;
 boolean passwordvisable;
 TextView createaccdoctxt;
+Button login ;
+//
 ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,14 @@ ProgressDialog progressDialog;
         setContentView(R.layout.activity_login2);
         password=findViewById(R.id.editTextTextPassword);
         createaccdoctxt=findViewById(R.id.createaccdoc);
+        login=findViewById(R.id.logindoc);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginActivity.this,DoctorActivity.class);
+                startActivity(i);
+            }
+        });
 
         createaccdoctxt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +67,8 @@ ProgressDialog progressDialog;
 
             }
         });
-        password.setOnTouchListener(new View.OnTouchListener() {
+
+             password.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                  final int Right =2;
