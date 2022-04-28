@@ -1,147 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".doctor.SignupActivity">
-<Button
-    android:id="@+id/selectdocphoto"
-    android:layout_width="130dp"
-    android:layout_height="130dp"
-    android:background="@drawable/add_photobutton"
-    android:drawableTop="@drawable/add_photo"
-    android:paddingTop="40dp"
-    android:layout_marginTop="50dp"
-    android:layout_gravity="center"
-    android:text="add image"
-    android:textColor="@color/gray"
-    android:textAllCaps="false"
-    />
-<EditText
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:background="@drawable/customedittext"
-        android:drawableStart="@drawable/ic_baseline_person_24"
-        android:paddingRight="15dp"
-        android:longClickable="false"
-        android:elevation="6dp"
-        android:ems="10"
-    android:textColorHint="@color/gray"
 
-    android:hint="Frist name "
-    android:drawablePadding="5dp"
-        android:paddingStart="15sp"
-        android:textSize="15sp"
-        android:layout_marginTop="15dp"
-       android:layout_gravity="center"
-        android:textColor="@color/black"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical">
 
-    <EditText
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:background="@drawable/customedittext"
-        android:drawableStart="@drawable/ic_baseline_person_24"
-        android:paddingRight="15dp"
-        android:longClickable="false"
-        android:elevation="6dp"
-        android:ems="10"
-        android:textColorHint="@color/gray"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/selectdocphoto"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/add_photobutton"
+            android:src="@drawable/ic_baseline_person_24"
+            app:civ_border_color="@color/gray" />
 
-        android:hint="Last name"
-        android:drawablePadding="5dp"
-        android:paddingStart="15sp"
-        android:textSize="15sp"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center"
-        android:textColor="@color/black"/>
-    <EditText
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:background="@drawable/customedittext"
-        android:drawableStart="@drawable/ic_baseline_email_24"
-        android:paddingRight="15dp"
-        android:drawablePadding="5dp"
-        android:longClickable="false"
-        android:elevation="6dp"
-        android:textColorHint="@color/gray"
 
-        android:ems="10"
-        android:hint="Email Adress"
-        android:inputType="textEmailAddress"
-        android:paddingStart="15sp"
-        android:textSize="15sp"
-        android:layout_marginTop="15dp"
-       android:layout_gravity="center"
-        android:textColor="@color/black"/>
-    <EditText
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:background="@drawable/customedittext"
-        android:drawableStart="@drawable/ic_baseline_lock_24"
-        android:drawableEnd="@drawable/ic_baseline_visibility_off_24"
-        android:paddingRight="15dp"
-        android:drawablePadding="5dp"
-        android:textColorHint="@color/gray"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Change Profile"
+            android:textColor="@color/gray"
+            android:textSize="16sp"
+            android:textStyle="bold"
 
-        android:longClickable="false"
-        android:elevation="6dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:paddingStart="15sp"
-        android:textSize="15sp"
-        android:layout_marginTop="15dp"
-      android:layout_gravity="center"
-        android:textColor="@color/black"/>
-    <EditText
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:background="@drawable/customedittext"
-        android:drawableLeft="@drawable/ic_baseline_exposure_zero_24"
-        android:drawablePadding="5dp"
-        android:drawableStart="@drawable/ic_baseline_exposure_plus_2_24"
-        android:paddingRight="15dp"
-        android:elevation="6dp"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:textColorHint="@color/gray"
+            />
 
-        android:inputType="phone"
-       android:paddingStart="15dp"
-        android:textSize="15sp"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center"
-        android:textColor="@color/black"/>
-    <EditText
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:background="@drawable/customedittext"
-        android:drawableStart="@drawable/ic_stethoscope"
-        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
-        android:drawablePadding="5dp"
-        android:paddingRight="15dp"
-        android:longClickable="false"
-        android:elevation="6dp"
-        android:ems="10"
-        android:textColorHint="@color/gray"
 
-        android:hint="Spacility"
-        android:paddingStart="15sp"
-        android:textSize="15sp"
-        android:layout_marginTop="15dp"
-    android:layout_gravity="center"
-        android:textColor="@color/black"/>
-    <Button
-android:id="@+id/nextdocbtn"
-        android:layout_width="360dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:text="Next"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:background="@drawable/custombutton"
-        />
-</LinearLayout>
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/customedittext"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawablePadding="5dp"
+            android:elevation="6dp"
+            android:ems="10"
+
+            android:hint="Frist name "
+            android:longClickable="false"
+            android:paddingStart="15sp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="15sp" />
+
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/customedittext"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawablePadding="5dp"
+            android:elevation="6dp"
+            android:ems="10"
+
+            android:hint="Last name"
+            android:longClickable="false"
+            android:paddingStart="15sp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="15sp" />
+
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/customedittext"
+            android:drawableStart="@drawable/ic_baseline_email_24"
+            android:drawablePadding="5dp"
+            android:elevation="6dp"
+            android:ems="10"
+
+            android:hint="Email Adress"
+            android:inputType="textEmailAddress"
+            android:longClickable="false"
+            android:paddingStart="15sp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="15sp" />
+
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/customedittext"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:drawableEnd="@drawable/ic_baseline_visibility_off_24"
+            android:drawablePadding="5dp"
+
+            android:elevation="6dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:longClickable="false"
+            android:paddingStart="15sp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="15sp" />
+
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/customedittext"
+            android:drawableStart="@drawable/ic_baseline_exposure_plus_2_24"
+            android:drawableLeft="@drawable/ic_baseline_exposure_zero_24"
+            android:drawablePadding="5dp"
+            android:elevation="6dp"
+            android:ems="10"
+            android:hint="Phone Number"
+
+            android:inputType="phone"
+            android:paddingStart="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="15sp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/act"
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/customedittext"
+            android:drawableStart="@drawable/ic_stethoscope"
+            android:drawablePadding="5dp"
+            android:elevation="6dp"
+            android:ems="10"
+            android:hint="Spacility"
+            android:longClickable="false"
+            android:paddingStart="15sp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:textSize="15sp" />
+
+
+
+
+        <Button
+            android:id="@+id/nextdocbtn"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/custombutton"
+            android:text="Next"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+
+
+
+    </LinearLayout>
+
+</ScrollView>

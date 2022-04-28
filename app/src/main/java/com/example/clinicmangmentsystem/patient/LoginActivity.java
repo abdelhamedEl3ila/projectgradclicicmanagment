@@ -13,10 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.clinicmangmentsystem.MainActivity;
 import com.example.clinicmangmentsystem.R;
-import com.example.clinicmangmentsystem.SelectActivity;
-import com.example.clinicmangmentsystem.doctor.SignupActivity;
 
 public class LoginActivity extends AppCompatActivity {
 TextView createacctxt;

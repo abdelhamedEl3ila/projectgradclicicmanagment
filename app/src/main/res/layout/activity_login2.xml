@@ -75,7 +75,7 @@
     android:textColor="#09709F"
     />
     <Button
-        android:id="@+id/button"
+        android:id="@+id/logindoc"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
