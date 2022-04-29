@@ -24,12 +24,12 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        tvTitle = findViewById(R.id.tvTitle);
-        tvSource = findViewById(R.id.tvSource);
-        tvTime = findViewById(R.id.tvDate);
+        tvTitle = findViewById(R.id.tvTitledet);
+        tvSource = findViewById(R.id.tvSourcedet);
+        tvTime = findViewById(R.id.tvDatedet);
         tvDesc = findViewById(R.id.tvDesc);
 
-        imageView = findViewById(R.id.imageView);
+        imageView = findViewById(R.id.imageViewdet);
 
         webView = findViewById(R.id.webView);
 

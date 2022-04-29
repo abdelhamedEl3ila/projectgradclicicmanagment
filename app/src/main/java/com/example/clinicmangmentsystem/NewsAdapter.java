@@ -2,6 +2,7 @@ package com.example.clinicmangmentsystem;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,12 +25,15 @@ import java.util.List;
 import java.util.Locale;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
-    Context mcontext;
+    Context context;
+
+
+
     List<Articles> articles;
 
 
     public NewsAdapter(Context context, List<Articles> articles) {
-        this.mcontext = context;
+        this.context = context;
         this.articles = articles;
     }
 
@@ -43,26 +47,26 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     @NonNull
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final Articles a = articles.get(position);
 
         String imageUrl = a.getUrlToImage();
         String url = a.getUrl();
-        Picasso.with(mcontext).load(imageUrl).into(holder.imageView);
+        Picasso.with(context).load(imageUrl).into(holder.imageView);
         holder.tvTitle.setText(a.getTitle());
         holder.tvSource.setText(a.getSource().getName());
         holder.tvDate.setText("\u2022"+dateTime(a.getPublishedAt()));
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mcontext,DetailsActivity.class);
-                intent.putExtra("title",a.getTitle());
-                intent.putExtra("source",a.getSource().getName());
-                intent.putExtra("time",dateTime(a.getPublishedAt()));
-                intent.putExtra("desc",a.getDescription());
-                intent.putExtra("imageUrl",a.getUrlToImage());
-                intent.putExtra("url",a.getUrl());
-                mcontext.startActivity(intent);
+                Intent i = new Intent(v.getContext(),DetailsActivity.class);
+                i.putExtra("title",a.getTitle());
+                i.putExtra("source",a.getSource().getName());
+                i.putExtra("time",dateTime(a.getPublishedAt()));
+                i.putExtra("desc",a.getDescription());
+                i.putExtra("imageUrl",a.getUrlToImage());
+                i.putExtra("url",a.getUrl());
+                v.getContext().startActivity(i);
             }
         });
 
@@ -86,7 +90,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             tvSource = itemView.findViewById(R.id.tvSource);
             tvDate = itemView.findViewById(R.id.tvDate);
             imageView = itemView.findViewById(R.id.image);
-            cardView = itemView.findViewById(R.id.cardView);
+            cardView = itemView.findViewById(R.id.cardViewnews);
 
         }
 

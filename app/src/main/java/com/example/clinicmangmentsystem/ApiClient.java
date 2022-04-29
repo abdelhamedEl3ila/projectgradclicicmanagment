@@ -8,33 +8,19 @@ public class ApiClient {
     private static ApiClient apiClient;
     private static Retrofit retrofit;
 
-
-    public  static  ApiInterface getapiinterface()
-    {
-        if (retrofit==null)
-        {
-            retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-
+    private ApiClient(){
+        retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
+    }
+    public static synchronized ApiClient getInstance(){
+        if (apiClient == null){
+            apiClient = new ApiClient();
         }
-        return retrofit.create(ApiInterface.class);
-
-
+        return apiClient;
     }
 
 
-//    private ApiClient(){
-//        retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-//    }
-//    public static synchronized ApiClient getInstance(){
-//        if (apiClient == null){
-//            apiClient = new ApiClient();
-//        }
-//        return apiClient;
-//    }
-//
-//
-//    public ApiInterface getApi(){
-//        return retrofit.create(ApiInterface.class);
-//    }
+    public ApiInterface getApi(){
+        return retrofit.create(ApiInterface.class);
+    }
 
 }
