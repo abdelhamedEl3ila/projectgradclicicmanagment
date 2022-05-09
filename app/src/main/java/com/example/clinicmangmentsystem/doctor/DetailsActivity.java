@@ -1,4 +1,4 @@
-package com.example.clinicmangmentsystem;
+package com.example.clinicmangmentsystem.doctor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.clinicmangmentsystem.R;
 import com.squareup.picasso.Picasso;
 
 public class DetailsActivity extends AppCompatActivity {

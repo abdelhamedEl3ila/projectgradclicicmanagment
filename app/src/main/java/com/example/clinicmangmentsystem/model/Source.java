@@ -1,4 +1,4 @@
-package com.example.clinicmangmentsystem;
+package com.example.clinicmangmentsystem.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

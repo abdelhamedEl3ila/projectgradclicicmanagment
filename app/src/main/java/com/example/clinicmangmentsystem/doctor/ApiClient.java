@@ -1,4 +1,4 @@
-package com.example.clinicmangmentsystem;
+package com.example.clinicmangmentsystem.doctor;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

@@ -3,64 +3,46 @@ package com.example.clinicmangmentsystem.patient;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.clinicmangmentsystem.R;
+import com.example.clinicmangmentsystem.adapter.SchduleAdapter;
+import com.example.clinicmangmentsystem.model.Schdulepat;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AllschduleFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class AllschduleFragment extends Fragment {
+RecyclerView recyclerView;
+private  ArrayList<Schdulepat> schdulepats;
+SchduleAdapter adapter;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public AllschduleFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AllschduleFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AllschduleFragment newInstance(String param1, String param2) {
-        AllschduleFragment fragment = new AllschduleFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_allschdule, container, false);
+        View v= inflater.inflate(R.layout.fragment_allschdule, container, false);
+        recyclerView=v.findViewById(R.id.recschdulepat);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        schdulepats= new ArrayList<>();
+         schdulepats.add(new Schdulepat("Ahmed mohmaed",R.drawable.healthcare_workers_medicine_covid_19_pandemic_self_quarantine_concept_smiling_attractive_doctor_scrubs_glasses_stethoscope_neck_cross_arms_chest_ready_help_patients_2,"Eyes","15 may 2022"));
+          schdulepats.add(new Schdulepat("MIDO",R.drawable.healthcare_workers_medicine_covid_19_pandemic_self_quarantine_concept_smiling_attractive_doctor_scrubs_glasses_stethoscope_neck_cross_arms_chest_ready_help_patients_2,"midp","15may2015"));
+       adapter= new SchduleAdapter(getContext(),schdulepats);
+       recyclerView.setAdapter(adapter);
+       return v;
+
+
     }
+
+
 }

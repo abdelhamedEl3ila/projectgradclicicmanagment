@@ -1,4 +1,6 @@
-package com.example.clinicmangmentsystem;
+package com.example.clinicmangmentsystem.doctor;
+
+import com.example.clinicmangmentsystem.model.Headlines;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

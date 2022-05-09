@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClinicMangmentSystem">
         <activity
-            android:name=".DetailsActivity"
+            android:name=".doctor.DetailsActivity"
             android:screenOrientation="locked"
             android:windowSoftInputMode="stateHidden"
             ></activity>
@@ -29,10 +29,10 @@
             android:name=".doctor.SignupActivity"
             android:exported="true" />
         <activity
-            android:name=".SelectActivity"
+            android:name=".ui.SelectActivity"
             android:exported="true" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

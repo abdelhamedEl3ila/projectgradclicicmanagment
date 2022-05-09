@@ -1,12 +1,10 @@
-package com.example.clinicmangmentsystem;
+package com.example.clinicmangmentsystem.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.clinicmangmentsystem.model.Articles;
+import com.example.clinicmangmentsystem.R;
+import com.example.clinicmangmentsystem.doctor.DetailsActivity;
 import com.squareup.picasso.Picasso;
 
 import org.ocpsoft.prettytime.PrettyTime;
@@ -59,7 +60,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(),DetailsActivity.class);
+                Intent i = new Intent(v.getContext(), DetailsActivity.class);
                 i.putExtra("title",a.getTitle());
                 i.putExtra("source",a.getSource().getName());
                 i.putExtra("time",dateTime(a.getPublishedAt()));

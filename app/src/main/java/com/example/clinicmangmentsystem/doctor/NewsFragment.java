@@ -12,20 +12,17 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.clinicmangmentsystem.ApiClient;
-import com.example.clinicmangmentsystem.Articles;
-import com.example.clinicmangmentsystem.Headlines;
-import com.example.clinicmangmentsystem.NewsAdapter;
+import com.example.clinicmangmentsystem.model.Articles;
+import com.example.clinicmangmentsystem.model.Headlines;
+import com.example.clinicmangmentsystem.adapter.NewsAdapter;
 import com.example.clinicmangmentsystem.R;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,7 +43,7 @@ public class NewsFragment extends Fragment {
     NewsAdapter adapter;
     List<Articles> articles = new ArrayList<>();
     private Context mContext;
-    final String country = "eg";
+    final String country = "us";
     String category = "health";
 
     @Override

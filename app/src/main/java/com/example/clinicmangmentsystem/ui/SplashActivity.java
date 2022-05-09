@@ -1,4 +1,4 @@
-package com.example.clinicmangmentsystem;
+package com.example.clinicmangmentsystem.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.os.HandlerThread;
 import android.widget.ImageView;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.example.clinicmangmentsystem.doctor.LoginActivity;
+import com.example.clinicmangmentsystem.R;
 
 public class SplashActivity extends AppCompatActivity {
 ImageView imageView;

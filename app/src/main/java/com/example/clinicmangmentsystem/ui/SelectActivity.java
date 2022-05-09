@@ -1,4 +1,4 @@
-package com.example.clinicmangmentsystem;
+package com.example.clinicmangmentsystem.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.clinicmangmentsystem.R;
 import com.example.clinicmangmentsystem.patient.LoginActivity;
 
 public class SelectActivity extends AppCompatActivity {
