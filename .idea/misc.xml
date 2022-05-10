@@ -20,7 +20,7 @@
         <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/activity_login2.xml" value="0.36666666666666664" />
         <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/activity_search.xml" value="0.2747747747747748" />
+        <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/activity_search.xml" value="0.33" />
         <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/activity_select.xml" value="0.17831813576494426" />
         <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/activity_signup.xml" value="0.16" />
         <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/activity_signuppatient.xml" value="0.33" />
@@ -31,7 +31,7 @@
         <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/fragment_clinicvisit.xml" value="0.2907608695652174" />
         <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/fragment_dashboard.xml" value="0.1547933157431838" />
         <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/fragment_home.xml" value="0.12423043095866315" />
-        <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/fragment_homepat.xml" value="0.13226076055160885" />
+        <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/fragment_homepat.xml" value="0.1" />
         <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/fragment_news.xml" value="0.3171171171171171" />
         <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/fragment_notifications.xml" value="0.15" />
         <entry key="..\:/App android/Clinic managment/app/src/main/res/layout/fragment_profiledoc.xml" value="0.1547933157431838" />

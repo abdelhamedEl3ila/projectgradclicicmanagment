@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 
 import com.example.clinicmangmentsystem.R;
+import com.example.clinicmangmentsystem.SearchActivity;
 
 
 public class HomepatFragment extends Fragment {
@@ -20,13 +22,11 @@ public class HomepatFragment extends Fragment {
 
 SearchView searchView ;
 LinearLayout searchbar;
+Button clinicvisitbtn;
 
     public HomepatFragment() {
 
-
-
     }
-
 
 
     @Override
@@ -36,17 +36,28 @@ LinearLayout searchbar;
         View v= inflater.inflate(R.layout.fragment_homepat, container, false);
         searchView=v.findViewById(R.id.searchView);
         searchbar=v.findViewById(R.id.searchbar);
+        clinicvisitbtn= v.findViewById(R.id.btnclinicvisit);
+        clinicvisitbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(v.getContext(), SearchActivity.class);
+                v.getContext().startActivity(in);
+            }
+        });
 
+
+
+        searchbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(),LoginActivity.class);
+                v.getContext().startActivity(i);
+            }
+        });
 
 
        return v;
 
     }
 
-    public void True(View view) {
-        Intent i = new Intent( getActivity().getApplication(),SearchActivity.class);
-        startActivity(i);
-
-
-    }
 }
