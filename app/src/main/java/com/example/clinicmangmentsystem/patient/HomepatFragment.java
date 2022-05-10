@@ -50,7 +50,7 @@ Button clinicvisitbtn;
         searchbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(),LoginActivity.class);
+                Intent i = new Intent(v.getContext(),SearchActivity.class);
                 v.getContext().startActivity(i);
             }
         });
