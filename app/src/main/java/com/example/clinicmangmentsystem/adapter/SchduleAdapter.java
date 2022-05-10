@@ -29,7 +29,7 @@ public class SchduleAdapter extends RecyclerView.Adapter<SchduleAdapter.ViewHold
     @NonNull
     @Override
     public SchduleAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_schdulepat,null,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_schdulepat,null,true);
         return new ViewHolder(v);
 
     }
@@ -52,7 +52,7 @@ public class SchduleAdapter extends RecyclerView.Adapter<SchduleAdapter.ViewHold
     {
         TextView docname,docspeci,resrv;
         ImageView imageView;
-        CardView cardView;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             docspeci=itemView.findViewById(R.id.specialtiestxt);
