@@ -1,9 +1,8 @@
-package com.example.clinicmangmentsystem.patient;
+package com.example.clinicmangmentsystem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import com.example.clinicmangmentsystem.R;
 
 public class SearchActivity extends AppCompatActivity {
 

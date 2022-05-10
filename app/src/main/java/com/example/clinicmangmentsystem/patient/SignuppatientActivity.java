@@ -16,6 +16,8 @@ public class SignuppatientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signuppatient);
         checkBoxA = (CheckBox) findViewById(R.id.checkBoxA);
+
+
         checkBoxB = (CheckBox) findViewById(R.id.checkBoxB);
     }
 
