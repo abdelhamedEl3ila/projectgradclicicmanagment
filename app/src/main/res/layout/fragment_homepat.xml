@@ -47,6 +47,8 @@ System"
 
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/searchbar"
+                 android:onClick="True"
                 android:layout_width="@dimen/_270sdp"
                 android:layout_height="@dimen/_90ssp"
                 android:background="@drawable/customedittext"
@@ -67,16 +69,17 @@ System"
                     android:textSize="@dimen/_15ssp"
                     android:textStyle="bold" />
                 <SearchView
-                    android:id="@+id/searchView"
-                    android:layout_width="@dimen/_250sdp"
-                    android:layout_height="@dimen/_35ssp"
-                    android:queryHint="Search by Specialize, doctor name"
-                    android:iconifiedByDefault="false"
-                    android:layout_marginHorizontal="@dimen/_16ssp"
-                    android:layout_marginTop="@dimen/_10ssp"
-                    android:background="@drawable/search"
-                    android:queryBackground="@color/search"
-                    />
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:queryHint="Enter Doctor name"
+                android:iconifiedByDefault="false"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/search"
+                android:queryBackground="@android:color/transparent"
+                />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
