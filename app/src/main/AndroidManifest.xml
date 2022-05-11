@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClinicMangmentSystem">
         <activity
-            android:name=".SearchActivity"
+            android:name=".patient.SearchActivity"
             android:exported="false" />
         <activity
             android:name=".doctor.DetailsActivity"
