@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.SearchView;
 
 import com.example.clinicmangmentsystem.R;
-import com.example.clinicmangmentsystem.SearchActivity;
 
 
 public class HomepatFragment extends Fragment {
@@ -54,7 +53,6 @@ Button clinicvisitbtn;
                 v.getContext().startActivity(i);
             }
         });
-
 
        return v;
 

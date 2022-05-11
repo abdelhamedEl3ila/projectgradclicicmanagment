@@ -1,21 +1,16 @@
 package com.example.clinicmangmentsystem.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.clinicmangmentsystem.DetalisSearchActivity;
 import com.example.clinicmangmentsystem.R;
-import com.example.clinicmangmentsystem.doctor.DetailsActivity;
 import com.example.clinicmangmentsystem.model.Schdulepat;
 import com.example.clinicmangmentsystem.model.Search;
 
@@ -34,9 +29,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     @NonNull
     @Override
     public SearchAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search,parent, false);
-
-        return new ViewHolder(view);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.search, null, true);
+        return new ViewHolder(v);
     }
 
     @Override
@@ -45,18 +39,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
         holder.speclitesname.setText(search.getNamespecialty());
         holder.speaclityicon.setImageDrawable(context.getDrawable(search.getImagespecialty()));
-        holder.searchcard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent i = new Intent(v.getContext(), DetalisSearchActivity.class);
-                i.putExtra("specltityname",search.getNamespecialty());
-                i.putExtra("specialtyimage",search.getImagespecialty());
-                v.getContext().startActivity(i);
-
-
-            }
-        });
 
     }
 
@@ -70,11 +52,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     {
         TextView speclitesname;
         ImageView speaclityicon;
-        CardView searchcard;
         public ViewHolder(@NonNull View itemView) {
         super(itemView);
-
-        searchcard=itemView.findViewById(R.id.searchcardview);
         speclitesname = itemView.findViewById(R.id.specialtytxt);
         speaclityicon = itemView.findViewById(R.id.specialtyicon);
 
