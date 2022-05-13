@@ -4,12 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.clinicmangmentsystem.R;
@@ -55,10 +53,10 @@ public class SchduleAdapter extends RecyclerView.Adapter<SchduleAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            docspeci=itemView.findViewById(R.id.specialtiestxt);
-            docname=itemView.findViewById(R.id.namedoctxxt);
+            docspeci=itemView.findViewById(R.id.specialtiesname);
+            docname=itemView.findViewById(R.id.Doctorname);
             imageView=itemView.findViewById(R.id.imagedoc);
-            resrv=itemView.findViewById(R.id.txttimeclinic);
+            resrv=itemView.findViewById(R.id.timeclinic);
 
 
 

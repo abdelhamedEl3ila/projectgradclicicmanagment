@@ -10,39 +10,31 @@
     tools:context=".patient.SearchActivity">
 
 <androidx.appcompat.widget.SearchView
-    android:id="@+id/searchview"
+    android:id="@+id/searchView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/_10sdp"
     android:background="@drawable/searchbar"
     app:queryHint="Enter doc name or speacalites"
     />
-<!--    <SearchView-->
-<!--        android:id="@+id/searchView2"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="@dimen/_35sdp"-->
-<!--        android:layout_marginTop="@dimen/_20sdp"-->
 
-<!--        android:background="@drawable/searchbar"-->
-<!--        android:queryBackground="@android:color/transparent"-->
-<!--        android:queryHint="Enter doc name or speacalites"-->
-<!--/>-->
 
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_7sdp"
         android:text="Choose the specialty: "
         android:textColor="@color/gray"
+        android:textSize="@dimen/_13ssp"
         android:fontFamily="@font/g_light"
         />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recsearch"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_5sdp" />
+ <androidx.recyclerview.widget.RecyclerView
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:id="@+id/recsearch"
+/>
 
 
 </LinearLayout>
