@@ -31,7 +31,7 @@ RecyclerView recyclerView ;
         doctorModels= new ArrayList<>();
         doctorAdapter = new DoctorAdapter(this,doctorModels);
         recyclerView.setAdapter(doctorAdapter);
-       doctorModels.add(new DoctorModel(specalityname,R.drawable.ic_paediatricsicon,"mido","abaaas elaqad","250",R.drawable.ic_doctor_svgrepo_com,"30min","avalible at 4pm",3));
+       doctorModels.add(new DoctorModel("specalityname",R.drawable.ic_paediatricsicon,"mido","abaaas elaqad","250",R.drawable.ic_doctor_svgrepo_com,"30min","avalible at 4pm",3));
        doctorModels.add(new DoctorModel(specalityname,R.drawable.ic_paediatricsicon,"mido","abaaas elaqad","250",R.drawable.ic_doctor_svgrepo_com,"30min","avalible at 4pm",3));
        doctorModels.add(new DoctorModel(specalityname,R.drawable.ic_paediatricsicon,"mido","abaaas elaqad","250",R.drawable.ic_doctor_svgrepo_com,"30min","avalible at 4pm",3));
 
