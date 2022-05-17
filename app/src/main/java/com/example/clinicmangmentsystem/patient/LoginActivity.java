@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
@@ -12,11 +14,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.text.Editable;
 
 import com.example.clinicmangmentsystem.R;
 
 public class LoginActivity extends AppCompatActivity {
 TextView createacctxt;
+EditText username;
+
 EditText passwordpat;
 
     boolean passwordvisable;
@@ -28,10 +33,32 @@ Button login ;
         setContentView(R.layout.activity_login);
         createacctxt = findViewById(R.id.createaccpat);
         login=findViewById(R.id.loginaspatientbtn);
-        passwordpat=findViewById(R.id.editTextTextPasswordpatient);
+        username = findViewById(R.id.editTextTextEmailAddress);
+        passwordpat= findViewById(R.id.editTextTextPasswordpatient);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                if (TextUtils.isEmpty(username.getText().toString()))
+
+                {
+                    username.setError("Please enter username");
+
+                    return;
+
+
+                }
+                if (TextUtils.isEmpty(passwordpat.getText().toString()))
+                {
+                    passwordpat.setError("please enter your password");
+                    return;
+
+
+
+                }
+
+
                 progressDialog = new ProgressDialog(LoginActivity.this);
                 progressDialog.show();
                 progressDialog.setContentView(R.layout.progress_dialog);

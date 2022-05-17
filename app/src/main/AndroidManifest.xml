@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClinicMangmentSystem">
         <activity
+            android:name=".MappatientActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetalisSearchActivity"
             android:exported="false" />
         <activity
