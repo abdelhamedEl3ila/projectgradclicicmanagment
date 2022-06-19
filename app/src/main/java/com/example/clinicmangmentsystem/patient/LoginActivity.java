@@ -15,8 +15,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.text.Editable;
+import android.widget.Toast;
 
+import com.example.clinicmangmentsystem.ApiClientapp;
+import com.example.clinicmangmentsystem.LoginRequest;
+import com.example.clinicmangmentsystem.LoginResponse;
 import com.example.clinicmangmentsystem.R;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 TextView createacctxt;
@@ -40,6 +48,7 @@ Button login ;
             public void onClick(View v) {
 
 
+
                 if (TextUtils.isEmpty(username.getText().toString()))
 
                 {
@@ -57,31 +66,16 @@ Button login ;
 
 
                 }
+                else{
+
+                    LoginRequest loginRequest = new LoginRequest();
+                    loginRequest.setEmail(username.getText().toString());
+                    loginRequest.setPassword(passwordpat.getText().toString());
+                    loginuser(loginRequest);
 
 
-                progressDialog = new ProgressDialog(LoginActivity.this);
-                progressDialog.show();
-                progressDialog.setContentView(R.layout.progress_dialog);
-                progressDialog.getWindow().setBackgroundDrawableResource(
+                }
 
-                        android.R.color.transparent
-                );
-                Thread time = new Thread()
-                {
-                    @Override
-                    public void run() {
-                        try {
-                            sleep(3500);
-                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(i);
-                            progressDialog.dismiss();
-                            finish();
-                        }catch (InterruptedException e){
-                            e.printStackTrace();
-                        }
-                    }
-                };
-                time.start();
 
             }
         });
@@ -92,6 +86,10 @@ Button login ;
                 startActivity(i);
             }
         });
+
+
+
+
         passwordpat.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -127,6 +125,66 @@ Button login ;
                 return false;
             }
         });
+
+
+    }
+    public   void  loginuser(LoginRequest loginRequest)
+    {
+        Call<LoginResponse> loginResponseCall = ApiClientapp.getservice().loginuser(loginRequest);
+        loginResponseCall.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                if (response.isSuccessful())
+                {
+
+
+//                    progressDialog = new ProgressDialog(LoginActivity.this);
+//                    progressDialog.show();
+//                    progressDialog.setContentView(R.layout.progress_dialog);
+//                    progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+//                    Thread time = new Thread()
+//                    {
+//                        @Override
+//                        public void run() {
+//                            try {
+//                                sleep(2000);
+//
+//                                progressDialog.dismiss();
+//                                finish();
+//                            }catch (InterruptedException e){
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    };
+//                    time.start();
+
+                    LoginResponse loginResponse = response.body();
+                    startActivity(new Intent(LoginActivity.this,MainActivity.class).putExtra("data",loginResponse));
+                    finish();
+
+
+
+                }
+                else {
+
+                    String message="ana error occurred please try again ..";
+                    Toast.makeText(LoginActivity.this,message,Toast.LENGTH_LONG).show();;
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                String message = t.getLocalizedMessage();
+                Toast.makeText(LoginActivity.this,message,Toast.LENGTH_LONG).show();;
+
+            }
+        });
+
+
 
     }
 
