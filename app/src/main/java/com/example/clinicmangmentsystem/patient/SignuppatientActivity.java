@@ -2,8 +2,10 @@ package com.example.clinicmangmentsystem.patient;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -11,7 +13,14 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.clinicmangmentsystem.ApiClientapp;
 import com.example.clinicmangmentsystem.R;
+import com.example.clinicmangmentsystem.RejesterRequest;
+import com.example.clinicmangmentsystem.RejesterResponse;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignuppatientActivity extends AppCompatActivity {
     CheckBox checkBoxA, checkBoxB;
@@ -34,6 +43,31 @@ public class SignuppatientActivity extends AppCompatActivity {
         email=findViewById(R.id.emailpat);
         phonenumber=findViewById(R.id.phonenumuser);
         next=findViewById(R.id.nextpatientbtn);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (TextUtils.isEmpty(email.getText().toString()) || TextUtils.isEmpty(fristusername.getText().toString()) || TextUtils.isEmpty(password.getText().toString()) || TextUtils.isEmpty(phonenumber.getText().toString())){
+
+
+
+            }
+                RejesterRequest rejesterRequest = new RejesterRequest();
+                rejesterRequest.setEmail(email.getText().toString());
+                rejesterRequest.setPassword(password.getText().toString());
+                rejesterRequest.setMobile_number(phonenumber.getText().toString());
+                rejesterRequest.setName(fristusername.getText().toString());
+                registerpatient(rejesterRequest);
+                Intent intent = new Intent(SignuppatientActivity.this,LoginActivity.class);
+                startActivity(intent);
+            }
+
+
+
+
+
+        });
+
+
 
 
     }
@@ -55,115 +89,42 @@ public class SignuppatientActivity extends AppCompatActivity {
                 break;
         }
     }
+    public void registerpatient (RejesterRequest rejesterRequest)
+    {
+        Call<RejesterResponse>rejesterResponseCall = ApiClientapp.getservice().registeruser(rejesterRequest);
+        rejesterResponseCall.enqueue(new Callback<RejesterResponse>() {
+            @Override
+            public void onResponse(Call<RejesterResponse> call, Response<RejesterResponse> response) {
 
-    public void click(View view) {
+                if (response.isSuccessful())
+                {
+                    startActivity(new Intent(SignuppatientActivity.this,LoginActivity.class));
+                    finish();
 
-        String fristusernamevalue = fristusername.getText().toString();
-        String lastusernamevalue = lastusername.getText().toString();
-        String passwordvalue = password.getText().toString();
-        String emailvalue = email.getText().toString();
-        String phonenumbervalue = phonenumber.getText().toString();
-        String male = checkBoxA.getText().toString();
-        String female = checkBoxB.getText().toString();
-        SharedPreferences.Editor editor =preferences.edit();
-        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
-        if (fristusernamevalue.length()>2)
-        {
-            editor.putString("fristname",fristusernamevalue);
-            editor.putString("lastname",lastusernamevalue);
-            editor.putString("password",passwordvalue);
-            editor.putString("eamil",emailvalue);
-            editor.putString("male",male);
-            editor.putString("female",female);
-            editor.putString("phonenumber",phonenumbervalue);
-            editor.commit();
+                }else {
+                    String message = "an error occured please try again";
+                    Toast.makeText(SignuppatientActivity.this,message,Toast.LENGTH_LONG);
 
-        }
-//        else {
-//            Toast.makeText(SignuppatientActivity.this,"Please Enter FristName",Toast.LENGTH_LONG).show();
-//
-//        }
-//        if (lastusernamevalue.length()>2)
-//        {
-//
-//            editor.putString("lastname",lastusernamevalue);
-//            editor.commit();
-//
-//
-//
-//        }
-//        else {
-//            Toast.makeText(SignuppatientActivity.this,"Please Enter LastName",Toast.LENGTH_LONG).show();
-//
-//        }
-//        if (emailvalue.length()>1)
-//        {
-//
-//            editor.putString("eamil",emailvalue);
-//
-//
-//
-//
-//        }
-//        else {
-//            Toast.makeText(SignuppatientActivity.this,"Please Enter eamil",Toast.LENGTH_LONG).show();
-//
-//        }
-//        if (passwordvalue.length()>1)
-//        {
-//
-//            editor.putString("password",passwordvalue);
-//            editor.commit();
-//
-//
-//
-//        }
-//        else {
-//            Toast.makeText(SignuppatientActivity.this,"Please Enter password",Toast.LENGTH_LONG).show();
-//
-//        }
-//        if (male.length()>1)
-//        {
-//
-//            editor.putString("male",male);
-//            editor.commit();
-//
-//
-//
-//        }
-//        else {
-//            Toast.makeText(SignuppatientActivity.this,"Please Enter gender",Toast.LENGTH_LONG).show();
-//
-//        }
-//        if (female.length()>1)
-//        {
-//
-//            editor.putString("female",female);
-//            editor.commit();
-//
-//
-//
-//        }
-//        else {
-//            Toast.makeText(SignuppatientActivity.this,"Please Enter gender",Toast.LENGTH_LONG).show();
-//
-//        }
-//        if (phonenumbervalue.length()>11)
-//        {
-//
-//            editor.putString("phonenumber",phonenumbervalue);
-//            editor.commit();
-//
-//
-//
-//        }
-//        else {
-//            Toast.makeText(SignuppatientActivity.this,"Please Enter phonenumber",Toast.LENGTH_LONG).show();
-//
-//        }
+
+                }
+
+
+            }
+
+
+            @Override
+            public void onFailure(Call<RejesterResponse> call, Throwable t) {
+
+                String message = t.getLocalizedMessage();
+                Toast.makeText(SignuppatientActivity.this,message,Toast.LENGTH_LONG);
+
+            }
+        });
+
+
+    }
 
 
 
 
     }
-}
