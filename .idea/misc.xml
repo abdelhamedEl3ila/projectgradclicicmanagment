@@ -91,10 +91,15 @@
         <entry key="..\:/cs/app/src/main/res/layout/fragment_activitypat.xml" value="0.245018115942029" />
         <entry key="..\:/cs/app/src/main/res/layout/fragment_homepat.xml" value="0.33" />
         <entry key="..\:/cs/app/src/main/res/layout/fragment_profilepat.xml" value="0.245018115942029" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.321" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/activity_signuppatient.xml" value="0.36666666666666664" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/fragment_allschdule.xml" value="0.27447916666666666" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/fragment_profilepat.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

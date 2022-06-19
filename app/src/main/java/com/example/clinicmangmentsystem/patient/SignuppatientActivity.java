@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -18,6 +19,8 @@ import com.example.clinicmangmentsystem.R;
 import com.example.clinicmangmentsystem.RejesterRequest;
 import com.example.clinicmangmentsystem.RejesterResponse;
 
+import java.util.regex.Pattern;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,8 +29,16 @@ public class SignuppatientActivity extends AppCompatActivity {
     CheckBox checkBoxA, checkBoxB;
     EditText fristusername,lastusername,password,email,phonenumber;
     Button next;
-    SharedPreferences preferences ;
-
+    private static final Pattern PASSWORD_PATTERN =
+            Pattern.compile("^" +
+                //    "(?=.*[0-9])" +         //at least 1 digit
+                    //"(?=.*[a-z])" +         //at least 1 lower case letter
+                    //"(?=.*[A-Z])" +         //at least 1 upper case letter
+                    "(?=.*[a-zA-Z])" +      //any letter
+//                    "(?=.*[@#$%^&+=])" +    //at least 1 special character
+                    "(?=\\S+$)" +           //no white spaces
+                    ".{4,}" +               //at least 4 characters
+                    "$");
 
 
 
@@ -38,7 +49,6 @@ public class SignuppatientActivity extends AppCompatActivity {
         checkBoxA = (CheckBox) findViewById(R.id.checkBoxA);
         checkBoxB = (CheckBox) findViewById(R.id.checkBoxB);
         fristusername=findViewById(R.id.fristusername);
-        lastusername=findViewById(R.id.lastusername);
         password=findViewById(R.id.pasworduser);
         email=findViewById(R.id.emailpat);
         phonenumber=findViewById(R.id.phonenumuser);
@@ -46,11 +56,18 @@ public class SignuppatientActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (TextUtils.isEmpty(email.getText().toString()) || TextUtils.isEmpty(fristusername.getText().toString()) || TextUtils.isEmpty(password.getText().toString()) || TextUtils.isEmpty(phonenumber.getText().toString())){
 
+                if (!validateEmail() | !validateUsername() | !validatePassword()) {
+                    return;
+                }
 
+                String input = "Email: " + email.getText().toString();
+                input += "\n";
+                input += "Username: " + fristusername.getText().toString();
+                input += "\n";
+                input += "Password: " + password.getText().toString();
 
-            }
+                Toast.makeText(SignuppatientActivity.this, input, Toast.LENGTH_SHORT).show();
                 RejesterRequest rejesterRequest = new RejesterRequest();
                 rejesterRequest.setEmail(email.getText().toString());
                 rejesterRequest.setPassword(password.getText().toString());
@@ -71,6 +88,60 @@ public class SignuppatientActivity extends AppCompatActivity {
 
 
     }
+    private boolean validateEmail() {
+        String emailInput = email.getText().toString().trim();
+
+        if (emailInput.isEmpty()) {
+            email.setError("Field can't be empty");
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+            email.setError("Please enter a valid email address");
+            return false;
+        } else {
+            email.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateUsername() {
+        String usernameInput = fristusername.getText().toString().trim();
+
+        if (usernameInput.isEmpty()) {
+            fristusername.setError("Field can't be empty");
+            return false;
+        } else if (usernameInput.length() > 15) {
+            fristusername.setError("Username too long");
+            return false;
+        } else {
+            fristusername.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validatePassword() {
+        String passwordInput = password.getText().toString().trim();
+
+        if (passwordInput.isEmpty()) {
+            password.setError("Field can't be empty");
+            return false;
+        } else if (!PASSWORD_PATTERN.matcher(passwordInput).matches()) {
+            password.setError("Password too weak");
+            return false;
+        } else {
+            password.setError(null);
+            return true;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
     public void onCheckboxClicked(View view) {
         switch (view.getId()) {

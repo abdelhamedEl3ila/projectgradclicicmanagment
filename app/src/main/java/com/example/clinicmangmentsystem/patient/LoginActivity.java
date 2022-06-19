@@ -29,11 +29,9 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 TextView createacctxt;
 EditText username;
-
 EditText passwordpat;
-
-    boolean passwordvisable;
-   ProgressDialog progressDialog;
+boolean passwordvisable;
+ProgressDialog progressDialog;
 Button login ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,14 +96,13 @@ Button login ;
                     if (event.getRawX()>=passwordpat.getRight()-passwordpat.getCompoundDrawables()[Right].getBounds().width()){
                         int selection=passwordpat.getSelectionEnd();
                         if (passwordvisable){
-                            //set drwableimage
                             passwordpat.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_off_24,0);
-                            //hide password
+
                             passwordpat.setTransformationMethod(PasswordTransformationMethod.getInstance());
                             passwordvisable=false;
                         }
                         else {
-                            //set drwableimage
+
                             passwordpat.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_24,0);
                             //show password
                             passwordpat.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
@@ -138,25 +135,25 @@ Button login ;
                 {
 
 
-//                    progressDialog = new ProgressDialog(LoginActivity.this);
-//                    progressDialog.show();
-//                    progressDialog.setContentView(R.layout.progress_dialog);
-//                    progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-//                    Thread time = new Thread()
-//                    {
-//                        @Override
-//                        public void run() {
-//                            try {
-//                                sleep(2000);
-//
-//                                progressDialog.dismiss();
-//                                finish();
-//                            }catch (InterruptedException e){
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                    };
-//                    time.start();
+                    progressDialog = new ProgressDialog(LoginActivity.this);
+                    progressDialog.show();
+                    progressDialog.setContentView(R.layout.progress_dialog);
+                    progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                    Thread time = new Thread()
+                    {
+                        @Override
+                        public void run() {
+                            try {
+                                sleep(2000);
+
+                                progressDialog.dismiss();
+                                finish();
+                            }catch (InterruptedException e){
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+                    time.start();
 
                     LoginResponse loginResponse = response.body();
                     startActivity(new Intent(LoginActivity.this,MainActivity.class).putExtra("data",loginResponse));
@@ -167,7 +164,7 @@ Button login ;
                 }
                 else {
 
-                    String message="ana error occurred please try again ..";
+                    String message="email or password is not true";
                     Toast.makeText(LoginActivity.this,message,Toast.LENGTH_LONG).show();;
 
 
