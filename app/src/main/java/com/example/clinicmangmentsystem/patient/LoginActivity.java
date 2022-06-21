@@ -133,27 +133,25 @@ Button login ;
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful())
                 {
-
-
-                    progressDialog = new ProgressDialog(LoginActivity.this);
-                    progressDialog.show();
-                    progressDialog.setContentView(R.layout.progress_dialog);
-                    progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-                    Thread time = new Thread()
-                    {
-                        @Override
-                        public void run() {
-                            try {
-                                sleep(2000);
-
-                                progressDialog.dismiss();
-                                finish();
-                            }catch (InterruptedException e){
-                                e.printStackTrace();
-                            }
-                        }
-                    };
-                    time.start();
+                    //          progressDialog = new ProgressDialog(LoginActivity.this);
+//                    progressDialog.show();
+//                    progressDialog.setContentView(R.layout.progress_dialog);
+//                    progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+//                    Thread time = new Thread()
+//                    {
+//                        @Override
+//                        public void run() {
+//                            try {
+//                                sleep(2000);
+//
+//                                progressDialog.dismiss();
+//                                finish();
+//                            }catch (InterruptedException e){
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    };
+//                    time.start();
 
                     LoginResponse loginResponse = response.body();
                     startActivity(new Intent(LoginActivity.this,MainActivity.class).putExtra("data",loginResponse));

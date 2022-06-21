@@ -6,15 +6,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.clinicmangmentsystem.adapter.DoctorAdapter;
 import com.example.clinicmangmentsystem.model.DoctorModel;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetalisSearchActivity extends AppCompatActivity {
 RecyclerView recyclerView ;
-    private ArrayList<DoctorModel> doctorModels;
+    private List<DoctorModel> doctorModels;
     private DoctorAdapter doctorAdapter ;
 
 
@@ -25,17 +31,28 @@ RecyclerView recyclerView ;
         setContentView(R.layout.activity_detalis_search);
         recyclerView=findViewById(R.id.Docdetailsrec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        Intent i = getIntent();
-        String specalityname = i.getStringExtra("specltityname");
-        String specalityicon = i.getStringExtra("specialtyimage");
-        doctorModels= new ArrayList<>();
         doctorAdapter = new DoctorAdapter(this,doctorModels);
         recyclerView.setAdapter(doctorAdapter);
-       doctorModels.add(new DoctorModel("specalityname",R.drawable.ic_paediatricsicon,"mido","abaaas elaqad","250",R.drawable.ic_doctor_svgrepo_com,"30min","avalible at 4pm",3));
-       doctorModels.add(new DoctorModel(specalityname,R.drawable.ic_paediatricsicon,"mido","abaaas elaqad","250",R.drawable.ic_doctor_svgrepo_com,"30min","avalible at 4pm",3));
-       doctorModels.add(new DoctorModel(specalityname,R.drawable.ic_paediatricsicon,"mido","abaaas elaqad","250",R.drawable.ic_doctor_svgrepo_com,"30min","avalible at 4pm",3));
+        interfaceServece interfacee = ApiClientapp.getretrofit()
+                .create(interfaceServece.class);
+        Call<List<DoctorModel>>call=interfacee.getallDoctor();
+        call.enqueue(new Callback<List<DoctorModel>>() {
+            @Override
+            public void onResponse(Call<List<DoctorModel>> call, Response<List<DoctorModel>> response) {
+                if (!response.isSuccessful())
+                {
 
+                    return;
 
+                }
+                doctorModels=response.body();
+            }
+
+            @Override
+            public void onFailure(Call<List<DoctorModel>> call, Throwable t) {
+                Log.d("TAG","ON Failure"+t.getLocalizedMessage()+"");
+            }
+        });
 
     }
 }

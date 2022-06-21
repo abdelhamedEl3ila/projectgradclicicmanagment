@@ -93,9 +93,19 @@
         <entry key="..\:/cs/app/src/main/res/layout/fragment_profilepat.xml" value="0.245018115942029" />
         <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.321" />
         <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/activity_search.xml" value="0.36666666666666664" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/activity_signup.xml" value="0.36666666666666664" />
         <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/activity_signuppatient.xml" value="0.36666666666666664" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/doctoritem.xml" value="0.36666666666666664" />
         <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/fragment_allschdule.xml" value="0.27447916666666666" />
         <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/fragment_profilepat.xml" value="0.36666666666666664" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/item_schdulepat.xml" value="0.36666666666666664" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/new_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/progress_dialog.xml" value="0.36666666666666664" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/search.xml" value="0.36666666666666664" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/searchitem.xml" value="0.17831813576494426" />
+        <entry key="..\:/projectgradclicicmanagment-master/app/src/main/res/layout/weekscheduledoctor.xml" value="0.25" />
       </map>
     </option>
   </component>

@@ -40,14 +40,9 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull DoctorAdapter.ViewHolder holder, int position) {
         final DoctorModel doctorModel = modelList.get(position);
-        holder.timewait.setText(doctorModel.getWaitingtime());
-        holder.docname.setText(doctorModel.getDoctorname());
-        holder.specalityname.setText(doctorModel.getSpecalityname());
-        holder.location.setText(doctorModel.getLocation());
-        holder.price.setText(doctorModel.getPrice());
-        holder.timeclinic.setText(doctorModel.getTimeclinic());
-        holder.imagedoc.setImageDrawable(context.getDrawable(doctorModel.getDoctorimage()));
-        holder.imagespeclaity.setImageDrawable(context.getDrawable(doctorModel.getSpecalityicon()));
+        holder.docname.setText(modelList.get(position).getName());
+        holder.specalityname.setText(modelList.get(position).getEmail());
+        holder.location.setText(modelList.get(position).getAdress());
     }
 
     @Override
