@@ -1,23 +1,88 @@
 package com.example.clinicmangmentsystem;
 
 import com.example.clinicmangmentsystem.model.DoctorModel;
-
-import java.util.List;
+import com.example.clinicmangmentsystem.model.DoctorProf;
+import com.example.clinicmangmentsystem.model.Editresponse;
+import com.example.clinicmangmentsystem.model.Getmedical;
+import com.example.clinicmangmentsystem.model.Login;
+import com.example.clinicmangmentsystem.model.MedicalResponse;
+import com.example.clinicmangmentsystem.model.PostMedical;
+import com.example.clinicmangmentsystem.model.ReviewModel;
+import com.example.clinicmangmentsystem.model.SelectDoctor;
+import com.example.clinicmangmentsystem.model.ShowAllReview;
+import com.example.clinicmangmentsystem.model.Showbooking;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface interfaceServece {
-
     @POST("api/auth/userLogin")
-    Call<LoginResponse>loginuser(@Body LoginRequest loginRequest);
+    Call<Login> loginuser(@Body LoginRequest loginRequest);
     @POST("api/auth/userRegister")
     Call<RejesterResponse> registeruser(@Body RejesterRequest rejesterRequest);
-@GET("api/auth/showDoctors")
-    Call<List<DoctorModel>>getallDoctor();
+    @GET("api/auth/showDoctors")
+    Call<DoctorModel> getallDoctor(
+            @Header( "Authorization" ) String token
+    );
+
+    @GET("api/auth/getMedicalHistory")
+    Call<Getmedical> getallmedical(
+            @Header( "Authorization" ) String token,
+            @Path ("id") int i
+
+    );
+    @POST("api/auth/addMedicalHistory")
+    Call<MedicalResponse> storeallmedical(
+            @Header( "Authorization" ) String token,
+            @Body PostMedical postMedical
+         );
 
 
+    @GET("api/auth/userProfile")
+    Call<Editresponse> getuserprofile(
+            @Header( "Authorization" ) String token
+            );
 
+    @POST("api/auth/profile/{id}")
+    Call<DoctorProf> getprofiledoc(
+            @Header( "Authorization" ) String type,
+      @Path("id") int id
+
+    );
+    @POST("api/auth/select/{id}")
+    Call<SelectDoctor> selectdoc(
+            @Header("Authorization") String token,
+            @Path("id") int id,
+             @Query("day") String day);
+
+
+    @GET("api/auth/bookedAppointments")
+    Call<Showbooking> getallshdule(
+            @Header( "Authorization" ) String token
+    );
+
+    @POST("api/auth/cancelAppointment/{id}")
+    Call<SelectDoctor> cancelbook(
+            @Header("Authorization") String token,
+            @Path("id") int id
+
+    );
+    @GET("api/auth/showReviews/{id}")
+    Call<ShowAllReview> getallreview(
+            @Header( "Authorization" ) String token,
+            @Path("id") int id
+    );
+
+    @POST("api/auth/createReview/{id}")
+    Call<ReviewModel> postreview(
+            @Header( "Authorization" ) String token,
+            @Path("id") int id,
+            @Query("content") String content,
+            @Query("rate") String rate
+    );
 }

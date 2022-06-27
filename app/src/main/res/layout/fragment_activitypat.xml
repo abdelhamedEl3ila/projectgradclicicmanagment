@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,71 +7,100 @@
     android:background="@color/background"
     android:orientation="vertical"
     tools:context=".patient.ActivitypatFragment">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:background="@color/secondcolor">
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/animationloading"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                app:lottie_rawRes="@raw/loadinganim"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"/>
-            <TextView
-                android:layout_width="206dp"
-                android:layout_height="68dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="35dp"
-                android:text="Schedule"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                />
-        </LinearLayout>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tablayout"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="8dp"
-        app:tabGravity="center"
-        app:tabIndicator="@drawable/tablayout"
-        app:tabIndicatorAnimationMode="elastic"
-        app:tabIndicatorColor="@color/secondcolor"
-        app:tabIndicatorGravity="stretch"
-        app:tabMode="fixed"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@color/secondcolor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-        app:tabSelectedTextColor="#ffffff"
-        app:tabTextColor="#B8B8B8">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationloading"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loadinganim" />
 
-        <com.google.android.material.tabs.TabItem
+        <TextView
+            android:layout_width="206dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="35dp"
+            android:text="Schedule"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/noactivity"
+        android:layout_width="0dp"
+        android:layout_height="457dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:src="@drawable/calender" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="All"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="No reservations yet."
+            android:textColor="@color/gray"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/bookdoctorbtn"
+            android:layout_width="222dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/custombutton"
+            android:text="Book a doctor"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
 
             />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clinic Visit" />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Call Doctor" />
+    </LinearLayout>
 
-    </com.google.android.material.tabs.TabLayout>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_85sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-    <androidx.viewpager.widget.ViewPager
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/schedulepager"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recschdulepat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_gravity="center" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-/>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -60,16 +60,38 @@ android:background="@color/background"
 
         android:layout_gravity="center"
         android:textColor="@color/black"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:orientation="horizontal"
+        >
 
-    <TextView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forget your password?"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textAllCaps="false"
+            android:textColor="#09709F"
+            />
+
+        <CheckBox
+        android:id="@+id/saveLoginCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forget your password?"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:textAllCaps="false"
-        android:textColor="#09709F"
-        />
+        android:layout_alignParentLeft="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_50sdp"
+        android:layout_below="@+id/editTextPassword"
+        android:text="Remember me"
+        android:textColor="@color/secondcolor" />
+
+
+
+
+
+    </LinearLayout>
     <Button
         android:id="@+id/loginaspatientbtn"
         android:layout_width="360dp"

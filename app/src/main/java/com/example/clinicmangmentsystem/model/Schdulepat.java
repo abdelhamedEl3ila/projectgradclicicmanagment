@@ -1,47 +1,66 @@
 package com.example.clinicmangmentsystem.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Schdulepat {
-    String NameDoctor;
-    int imageView ;
-    String Specialties;
-    String Reservation;
+    private Integer id;
+    private String name;
+    private String mobile_number;
+    private String day;
+    private String createdAt;
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Schdulepat(String nameDoctor, int imageView, String specialties, String reservation) {
-        NameDoctor = nameDoctor;
-        this.imageView = imageView;
-        Specialties = specialties;
-        Reservation = reservation;
+    public Integer getId() {
+        return id;
     }
 
-    public String getNameDoctor() {
-        return NameDoctor;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setNameDoctor(String nameDoctor) {
-        NameDoctor = nameDoctor;
+    public String getName() {
+        return name;
     }
 
-    public int getImageView() {
-        return imageView;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setImageView(int imageView) {
-        this.imageView = imageView;
+    public String getMobile_number() {
+        return mobile_number;
     }
 
-    public String getSpecialties() {
-        return Specialties;
+    public void setMobile_number(String mobile_number) {
+        this.mobile_number = mobile_number;
     }
 
-    public void setSpecialties(String specialties) {
-        Specialties = specialties;
+    public void setAdditionalProperties(Map<String, Object> additionalProperties) {
+        this.additionalProperties = additionalProperties;
     }
 
-    public String getReservation() {
-        return Reservation;
+    public String getDay() {
+        return day;
     }
 
-    public void setReservation(String reservation) {
-        Reservation = reservation;
+    public void setDay(String day) {
+        this.day = day;
     }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
 }

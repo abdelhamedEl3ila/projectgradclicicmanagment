@@ -68,17 +68,17 @@ System"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_15ssp"
                     android:textStyle="bold" />
+
                 <SearchView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:queryHint="Enter Doctor name"
-                android:iconifiedByDefault="false"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/search"
-                android:queryBackground="@android:color/transparent"
-                />
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/search"
+                    android:iconifiedByDefault="false"
+                    android:queryBackground="@android:color/transparent"
+                    android:queryHint="Search by Specialize, doctor name" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -88,6 +88,7 @@ System"
                 >
 
                 <Button
+                    android:id="@+id/btncaldoc"
                     android:layout_width="115dp"
                     android:layout_height="105dp"
                     android:layout_gravity="center"
@@ -136,12 +137,13 @@ System"
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/medical_history"
                 android:layout_width="363dp"
                 android:layout_height="110dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:elevation="5dp"
-                android:background="@drawable/customedittext">
+                android:background="@drawable/customedittext"
+                android:elevation="5dp">
 
                 <TextView
                     android:id="@+id/textView"
@@ -166,8 +168,8 @@ System"
                     android:layout_height="43dp"
                     android:text="Contains all medical history
                      written by all doctor you dealt with."
-                    android:textSize="15sp"
                     android:textColor="@color/gray"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.2"
@@ -202,6 +204,7 @@ System"
                     app:layout_constraintVertical_bias="0.333" />
 
                 <Button
+                    android:id="@+id/viewMedicalHistory"
                     android:layout_width="90dp"
                     android:layout_height="25dp"
                     android:background="@drawable/custombutton"
@@ -329,24 +332,23 @@ System"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/customedittext"
-                        android:drawableTop="@drawable/rectangle_201"
+                        android:drawableTop="@drawable/ic_stethoscope_doctor_svgrepo_com"
                         android:paddingTop="5dp"
-                        android:text="Eyes"
+                        android:text="Osteopathy"
                         android:textAllCaps="false"
                         android:textColor="@color/secondcolor" />
 
                     <Button
                         android:id="@+id/digoness1"
-
                         android:layout_width="100dp"
                         android:layout_height="150dp"
                         android:layout_margin="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/customedittext"
-                        android:drawableTop="@drawable/rectangle_201"
+                        android:drawableTop="@drawable/ic_dentist_svgrepo_com__1_"
                         android:paddingTop="5dp"
-                        android:text="Eyes"
+                        android:text="Dentistry"
                         android:textAllCaps="false"
                         android:textColor="@color/secondcolor" />
 
@@ -359,9 +361,9 @@ System"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/customedittext"
-                        android:drawableTop="@drawable/rectangle_201"
+                        android:drawableTop="@drawable/ic_i_pediatrics_svgrepo_com"
                         android:paddingTop="5dp"
-                        android:text="Eyes"
+                        android:text="Paediatrics"
                         android:textAllCaps="false"
                         android:textColor="@color/secondcolor" />
 
@@ -374,7 +376,7 @@ System"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/customedittext"
-                        android:drawableTop="@drawable/rectangle_201"
+                        android:drawableTop="@drawable/ic_eyes_svgrepo_com"
                         android:paddingTop="5dp"
                         android:text="Eyes"
                         android:textAllCaps="false"

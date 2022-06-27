@@ -16,21 +16,34 @@
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginEnd="@dimen/_15sdp"
         android:layout_gravity="center"
-        >
+        ><![CDATA[
 
 
-        <ImageView
-            android:id="@+id/imagedoc"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_5sdp"
+        ;
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.053"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.191" />
+
+
+
+
+
+        ]]>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imagedoc"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:src="@drawable/healthcare_workers_medicine_covid_19_pandemic_self_quarantine_concept_smiling_attractive_doctor_scrubs_glasses_stethoscope_neck_cross_arms_chest_ready_help_patients_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.083"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.209" />
 
         <TextView
             android:id="@+id/Doctorname"
@@ -87,8 +100,7 @@
             android:id="@+id/cancelclinic"
             android:layout_width="@dimen/_120sdp"
             android:layout_height="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_90sdp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:background="#FAC7C7"
             android:text="Cancel"
             android:textAllCaps="false"
@@ -103,6 +115,22 @@
 
         <Button
             android:id="@+id/callclinic"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/secondcolor"
+            android:text="Call Clinic"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.722"
+            app:layout_constraintStart_toEndOf="@+id/cancelclinic"
+            app:layout_constraintTop_toBottomOf="@+id/timeclinic" />
+
+        <Button
+            android:id="@+id/callclinic2"
             android:layout_width="@dimen/_120sdp"
             android:layout_height="@dimen/_25sdp"
             android:layout_marginTop="@dimen/_5sdp"

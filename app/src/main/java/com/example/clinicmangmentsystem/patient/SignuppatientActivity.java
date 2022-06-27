@@ -6,11 +6,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -18,6 +22,8 @@ import com.example.clinicmangmentsystem.ApiClientapp;
 import com.example.clinicmangmentsystem.R;
 import com.example.clinicmangmentsystem.RejesterRequest;
 import com.example.clinicmangmentsystem.RejesterResponse;
+
+import org.json.JSONObject;
 
 import java.util.regex.Pattern;
 
@@ -29,6 +35,8 @@ public class SignuppatientActivity extends AppCompatActivity {
     CheckBox checkBoxA, checkBoxB;
     EditText fristusername,lastusername,password,email,phonenumber;
     Button next;
+    boolean passwordvisable;
+
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                 //    "(?=.*[0-9])" +         //at least 1 digit
@@ -51,7 +59,7 @@ public class SignuppatientActivity extends AppCompatActivity {
         fristusername=findViewById(R.id.fristusername);
         password=findViewById(R.id.pasworduser);
         email=findViewById(R.id.emailpat);
-        phonenumber=findViewById(R.id.phonenumuser);
+        phonenumber=findViewById(R.id.phonenumber);
         next=findViewById(R.id.nextpatientbtn);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,25 +75,81 @@ public class SignuppatientActivity extends AppCompatActivity {
                 input += "\n";
                 input += "Password: " + password.getText().toString();
 
-                Toast.makeText(SignuppatientActivity.this, input, Toast.LENGTH_SHORT).show();
                 RejesterRequest rejesterRequest = new RejesterRequest();
                 rejesterRequest.setEmail(email.getText().toString());
                 rejesterRequest.setPassword(password.getText().toString());
                 rejesterRequest.setMobile_number(phonenumber.getText().toString());
                 rejesterRequest.setName(fristusername.getText().toString());
+                rejesterRequest.setGender(checkBoxA.getText().toString());
+                rejesterRequest.setPhoto(checkBoxA.getText().toString());
+
                 registerpatient(rejesterRequest);
-                Intent intent = new Intent(SignuppatientActivity.this,LoginActivity.class);
-                startActivity(intent);
+                savedata(rejesterRequest);
+            }});
+
+        password.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int Right =2;
+                if(event.getAction()==MotionEvent.ACTION_UP){
+                    if (event.getRawX()>=password.getRight()-password.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection=password.getSelectionEnd();
+                        if (passwordvisable){
+                            password.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_off_24,0);
+
+                            password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordvisable=false;
+                        }
+                        else {
+
+                            password.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_24,0);
+                            //show password
+                            password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordvisable=true;
+                        }
+                        password.setSelection(selection);
+                        return true;
+
+
+
+                    }
+
+
+
+
+                }
+                return false;
             }
-
-
-
-
-
         });
 
 
+    }
+    private void savedata(RejesterRequest rejesterRequest)
+    {
+        Call<RejesterResponse>call=ApiClientapp.getservice().registeruser(rejesterRequest);
+        call.enqueue(new Callback<RejesterResponse>() {
+            @Override
+            public void onResponse(Call<RejesterResponse> call, Response<RejesterResponse> response) {
+                if (response.isSuccessful()){
+                    RejesterResponse rejesterResponse = response.body();
+                    Intent ii = new Intent(SignuppatientActivity.this, MainActivity.class);
+                    startActivity(ii);
 
+                }
+                else {
+                    String message="email or password is not true";
+                    Toast.makeText(SignuppatientActivity.this,message,Toast.LENGTH_LONG).show();;
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RejesterResponse> call, Throwable t) {
+                String message = t.getLocalizedMessage();
+                Toast.makeText(SignuppatientActivity.this,message,Toast.LENGTH_LONG).show();;
+
+            }
+        });
 
     }
     private boolean validateEmail() {

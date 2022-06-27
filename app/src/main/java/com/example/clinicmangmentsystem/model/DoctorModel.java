@@ -1,50 +1,28 @@
 package com.example.clinicmangmentsystem.model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class DoctorModel {
-    String email;
-    String name;
-    String adress;
-    int id;
 
-    public int getId() {
-        return id;
+    private List<Datum> data = null;
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public List<Datum> getData() {
+        return data;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setData(List<Datum> data) {
+        this.data = data;
     }
 
-    public DoctorModel(int id) {
-        this.id = id;
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
     }
 
-    public DoctorModel(String email, String name, String adress) {
-        this.email = email;
-        this.name = name;
-        this.adress = adress;
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAdress() {
-        return adress;
-    }
-
-    public void setAdress(String adress) {
-        this.adress = adress;
-    }
 }
