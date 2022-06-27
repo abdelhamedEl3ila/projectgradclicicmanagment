@@ -11,6 +11,7 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardviewdoctor"
         android:layout_width="@dimen/_300sdp"
         android:layout_height="@dimen/_320sdp"
         android:layout_gravity="center"
@@ -20,32 +21,50 @@
         android:background="@drawable/customedittext">
 
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imagedoc"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_50sdp"
             android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:src="@drawable/ic_doctor_svgrepo_com"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintHorizontal_bias="0.047"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.117" />
+            app:layout_constraintVertical_bias="0.082" />
 
         <TextView
-            android:id="@+id/Doctorname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dr.Ahmed Mohamed"
+
+            android:id="@+id/textView14"
+            android:layout_width="21dp"
+            android:layout_height="20dp"
+            android:text="Dr"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.112"
+            app:layout_constraintHorizontal_bias="0.058"
             app:layout_constraintStart_toEndOf="@+id/imagedoc"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.123" />
+
+        <TextView
+            android:id="@+id/Doctorname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ahmed Mohamed"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView14"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.124" />
 
@@ -53,13 +72,14 @@
             android:id="@+id/iconspecality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
             android:src="@drawable/ic_paediatricsicon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.064"
+            app:layout_constraintHorizontal_bias="0.036"
             app:layout_constraintStart_toEndOf="@+id/imagedoc"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.192" />
+            app:layout_constraintVertical_bias="0.194" />
 
         <TextView
             android:id="@+id/specialtiesname"
@@ -67,19 +87,20 @@
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/_5sdp"
             android:text="Dentist"
+            android:layout_marginStart="@dimen/_2sdp"
             android:textColor="@color/secondcolor"
             android:textSize="@dimen/_11ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.171"
-            app:layout_constraintStart_toEndOf="@+id/imagedoc"
+            app:layout_constraintHorizontal_bias="0.004"
+            app:layout_constraintStart_toEndOf="@+id/iconspecality"
             app:layout_constraintTop_toBottomOf="@+id/Doctorname"
             app:layout_constraintVertical_bias="0.021" />
 
         <RatingBar
             android:id="@+id/ratingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="255dp"
+            android:layout_height="42dp"
             android:isIndicator="false"
             android:numStars="5"
             android:progressTint="#FFEB3B"
@@ -89,10 +110,9 @@
             android:stepSize="1.0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.22"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/specialtiesname"
-            app:layout_constraintVertical_bias="0.032" />
+            app:layout_constraintVertical_bias="0.061" />
 
         <View
             android:id="@+id/view"
@@ -113,10 +133,10 @@
             android:src="@drawable/ic_vector"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.087"
+            app:layout_constraintHorizontal_bias="0.09"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view"
-            app:layout_constraintVertical_bias="0.124" />
+            app:layout_constraintVertical_bias="0.133" />
 
         <ImageView
             android:id="@+id/imageView6"
@@ -177,21 +197,26 @@
 
         <TextView
             android:id="@+id/locationtxt"
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="@dimen/_35sdp"
-            android:text="Nasr City: Ali Ameen Street -along the way of mostafa el nahaas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cairo"
+
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.244"
+            app:layout_constraintHorizontal_bias="0.067"
             app:layout_constraintStart_toEndOf="@+id/imageView4"
             app:layout_constraintTop_toBottomOf="@+id/view"
-            app:layout_constraintVertical_bias="0.102" />
+            app:layout_constraintVertical_bias="0.133" />
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Examination Price"
+            android:text="Examination Price:"
+            android:textColor="@color/black"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.049"
@@ -203,19 +228,37 @@
             android:id="@+id/pricetxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="250EG"
+            android:text="250"
+            android:textColor="@color/black"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.041"
             app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toBottomOf="@+id/view"
-            app:layout_constraintVertical_bias="0.331" />
+            app:layout_constraintVertical_bias="0.33" />
+
+        <TextView
+            android:id="@+id/pricetxt2"
+            android:layout_width="59dp"
+            android:layout_height="22dp"
+            android:text="EG"
+            android:textColor="@color/black"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/pricetxt"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintVertical_bias="0.333" />
 
         <TextView
             android:id="@+id/waitingtimetxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="30 min"
+            android:text="30"
+            android:textColor="@color/black"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.036"
@@ -224,10 +267,26 @@
             app:layout_constraintVertical_bias="0.538" />
 
         <TextView
+            android:id="@+id/waitingtimetxt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="min"
+            android:textColor="@color/black"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/waitingtimetxt"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintVertical_bias="0.537" />
+
+        <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Waiting Time:"
+            android:textColor="@color/black"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.04"

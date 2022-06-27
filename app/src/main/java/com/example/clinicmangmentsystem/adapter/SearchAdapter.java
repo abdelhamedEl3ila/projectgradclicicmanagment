@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,8 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.clinicmangmentsystem.DetalisSearchActivity;
 import com.example.clinicmangmentsystem.R;
-import com.example.clinicmangmentsystem.doctor.DetailsActivity;
-import com.example.clinicmangmentsystem.model.Schdulepat;
+import com.example.clinicmangmentsystem.model.Datum;
 import com.example.clinicmangmentsystem.model.Search;
 
 import java.util.List;

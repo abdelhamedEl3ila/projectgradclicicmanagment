@@ -32,41 +32,52 @@
                 android:textStyle="bold"
                 />
         </LinearLayout>
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tablayout"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="8dp"
-        app:tabGravity="center"
-        app:tabIndicator="@drawable/tablayout"
-        app:tabIndicatorAnimationMode="elastic"
-        app:tabIndicatorColor="@color/secondcolor"
-        app:tabIndicatorGravity="stretch"
-        app:tabMode="fixed"
-
-        app:tabSelectedTextColor="#ffffff"
-        app:tabTextColor="#B8B8B8">
-
-        <com.google.android.material.tabs.TabItem
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/noactivity"
+        android:layout_width="match_parent"
+        android:layout_height="142dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.405">
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/calender"
+            android:layout_gravity="center"
+            />
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="All"
+            android:layout_gravity="center"
+            android:text="No reservations yet."
+            android:textSize="15sp"
+            android:textColor="@color/gray"
+            android:layout_margin="5dp"
+            />
+        <Button
+            android:id="@+id/bookdoctorbtn"
+            android:layout_width="222dp"
+            android:layout_height="wrap_content"
+            android:text="Book a doctor"
+            android:textAllCaps="false"
+
+            android:background="@drawable/custombutton"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
 
             />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clinic Visit" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Call Doctor" />
-
-    </com.google.android.material.tabs.TabLayout>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recschdulepat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        />
 
     <androidx.viewpager.widget.ViewPager
     android:layout_width="match_parent"

@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 
+import com.example.clinicmangmentsystem.DetalisSearchActivity;
+import com.example.clinicmangmentsystem.MedicalActivity;
 import com.example.clinicmangmentsystem.R;
 
 
@@ -22,6 +24,8 @@ public class HomepatFragment extends Fragment {
 SearchView searchView ;
 LinearLayout searchbar;
 Button clinicvisitbtn;
+Button Medical_HIstoryview;
+
 
     public HomepatFragment() {
 
@@ -36,10 +40,19 @@ Button clinicvisitbtn;
         searchView=v.findViewById(R.id.searchView);
         searchbar=v.findViewById(R.id.searchbar);
         clinicvisitbtn= v.findViewById(R.id.btnclinicvisit);
+        Medical_HIstoryview= v.findViewById(R.id.viewMedicalHistory);
+        clinicvisitbtn= v.findViewById(R.id.btnclinicvisit);
+        Medical_HIstoryview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(v.getContext(), MedicalActivity.class);
+                v.getContext().startActivity(in);
+            }
+        });
         clinicvisitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(v.getContext(), SearchActivity.class);
+                Intent in = new Intent(v.getContext(), DetalisSearchActivity.class);
                 v.getContext().startActivity(in);
             }
         });

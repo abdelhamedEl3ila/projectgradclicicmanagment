@@ -27,9 +27,6 @@ import java.util.Locale;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     Context context;
-
-
-
     List<Articles> articles;
 
 
@@ -91,7 +88,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             tvSource = itemView.findViewById(R.id.tvSource);
             tvDate = itemView.findViewById(R.id.tvDate);
             imageView = itemView.findViewById(R.id.image);
-            cardView = itemView.findViewById(R.id.cardViewnews);
+            cardView = itemView.findViewById(R.id.cardviewnews);
 
         }
 

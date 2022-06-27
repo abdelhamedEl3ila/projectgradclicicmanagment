@@ -136,12 +136,13 @@ System"
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/medical_history"
                 android:layout_width="363dp"
                 android:layout_height="110dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:elevation="5dp"
-                android:background="@drawable/customedittext">
+                android:background="@drawable/customedittext"
+                android:elevation="5dp">
 
                 <TextView
                     android:id="@+id/textView"
@@ -166,8 +167,8 @@ System"
                     android:layout_height="43dp"
                     android:text="Contains all medical history
                      written by all doctor you dealt with."
-                    android:textSize="15sp"
                     android:textColor="@color/gray"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.2"
@@ -202,6 +203,7 @@ System"
                     app:layout_constraintVertical_bias="0.333" />
 
                 <Button
+                    android:id="@+id/viewMedicalHistory"
                     android:layout_width="90dp"
                     android:layout_height="25dp"
                     android:background="@drawable/custombutton"

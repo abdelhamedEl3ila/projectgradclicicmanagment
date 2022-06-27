@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
->
+        >
         <View
             android:id="@+id/view2"
             android:layout_width="match_parent"
@@ -80,7 +80,6 @@
             android:background="@color/white"
             android:layout_marginTop="@dimen/_15ssp"
             android:drawableStart="@drawable/ic_baseline_person_24"
-            android:drawableEnd="@drawable/ic_baseline_arrow_downward_24"
             android:drawablePadding="@dimen/_5sdp"
             android:padding="@dimen/_7sdp"
             android:paddingLeft="@dimen/_10sdp"
@@ -96,7 +95,6 @@
             app:layout_constraintVertical_bias="0.044" />
 
         <LinearLayout
-            android:visibility="gone"
             android:layout_marginTop="@dimen/_2sdp"
             android:id="@+id/line1"
             android:layout_width="match_parent"
@@ -123,6 +121,8 @@
                 android:id="@+id/fulluser"
                 android:layout_width="@dimen/_290sdp"
                 android:layout_height="@dimen/_35sdp"
+                android:elevation="5dp"
+
                 android:background="@drawable/search"
                 android:layout_marginStart="@dimen/_15ssp"
                 android:textColor="@color/black"
@@ -142,6 +142,7 @@
                 android:id="@+id/mobileedit"
                 android:layout_width="@dimen/_290sdp"
                 android:layout_height="@dimen/_35sdp"
+                android:elevation="5dp"
                 android:background="@drawable/search"
                 android:layout_marginStart="@dimen/_15ssp"
                 android:textColor="@color/black"
@@ -159,23 +160,28 @@
             <EditText
                 android:id="@+id/emailedit"
                 android:layout_width="@dimen/_290sdp"
+                android:elevation="5dp"
+
                 android:layout_height="@dimen/_35sdp"
                 android:background="@drawable/search"
                 android:layout_marginStart="@dimen/_15ssp"
                 android:textColor="@color/black"
                 />
             <Button
+                android:id="@+id/editprofile"
                 android:layout_width="@dimen/_300sdp"
                 android:layout_height="wrap_content"
                 android:text="Edit"
                 android:textSize="@dimen/_15ssp"
+                android:elevation="10dp"
 
                 android:textAllCaps="false"
-                  android:textColor="@color/secondcolor"
+                android:textColor="@color/secondcolor"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_60sdp"
                 android:background="@drawable/cucstombtn2"/>
             <Button
+                android:id="@+id/saveediyprofile"
                 android:layout_width="@dimen/_300sdp"
                 android:layout_height="wrap_content"
                 android:text="Save"

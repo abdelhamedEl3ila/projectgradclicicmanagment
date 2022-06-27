@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,10 +36,10 @@ public class SchduleAdapter extends RecyclerView.Adapter<SchduleAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull SchduleAdapter.ViewHolder holder, int position) {
         final Schdulepat schdulepat = list.get(position);
-        holder.docname.setText(schdulepat.getNameDoctor());
-        holder.docspeci.setText(schdulepat.getSpecialties());
-        holder.resrv.setText(schdulepat.getReservation());
-        holder.imageView.setImageDrawable(context.getDrawable(schdulepat.getImageView()));
+        holder.docname.setText(schdulepat.getName());
+        holder.resrv.setText(schdulepat.getDay());
+
+
 
     }
 
@@ -50,6 +51,7 @@ public class SchduleAdapter extends RecyclerView.Adapter<SchduleAdapter.ViewHold
     {
         TextView docname,docspeci,resrv;
         ImageView imageView;
+        Button cancelbook ,callclinic;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -57,6 +59,9 @@ public class SchduleAdapter extends RecyclerView.Adapter<SchduleAdapter.ViewHold
             docname=itemView.findViewById(R.id.Doctorname);
             imageView=itemView.findViewById(R.id.imagedoc);
             resrv=itemView.findViewById(R.id.timeclinic);
+            cancelbook=itemView.findViewById(R.id.cancelclinic);
+            callclinic=itemView.findViewById(R.id.callclinic2);
+
 
 
 

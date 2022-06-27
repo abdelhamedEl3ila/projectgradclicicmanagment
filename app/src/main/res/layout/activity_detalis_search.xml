@@ -8,19 +8,19 @@
     tools:context=".DetalisSearchActivity">
 
 
-    <SearchView
-        android:id="@+id/searchView2"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_35sdp"
-        android:background="@drawable/searchbar"
-        android:drawingCacheQuality="high"
-        android:queryBackground="@color/gray"
-        android:queryHint="Enter Doctor Name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001" />
+<!--    <SearchView-->
+<!--        android:id="@+id/searchView2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_35sdp"-->
+<!--        android:background="@drawable/searchbar"-->
+<!--        android:drawingCacheQuality="high"-->
+<!--        android:queryBackground="@color/gray"-->
+<!--        android:queryHint="Enter Doctor Name"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.001" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Docdetailsrec"
@@ -28,8 +28,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView2"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
