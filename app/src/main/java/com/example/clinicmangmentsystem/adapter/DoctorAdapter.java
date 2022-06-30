@@ -37,7 +37,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
 {
     Context context;
      List<Datum> data;
-
     List<Datum> moviesListAll;
     public DoctorAdapter(Context context, List<Datum> data) {
         this.context = context;
@@ -87,6 +86,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
 
 
     }
+
     @Override
     public int getItemCount() {
         return data.size();

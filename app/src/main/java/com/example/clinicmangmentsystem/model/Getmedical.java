@@ -3,45 +3,45 @@ package com.example.clinicmangmentsystem.model;
 import java.util.Date;
 
 public class Getmedical {
-    private long id;
-    private long patientID;
-    private long height;
-    private long weight;
+    private int id;
+    private int patientID;
+    private int height;
+    private int weight;
     private String bloodType;
     private String relationshipState;
     private String diseases;
     private Date createdAt;
     private Date updatedAt;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public long getPatientID() {
+    public int getPatientID() {
         return patientID;
     }
 
-    public void setPatientID(long patientID) {
+    public void setPatientID(int patientID) {
         this.patientID = patientID;
     }
 
-    public long getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    public void setHeight(long height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 
-    public long getWeight() {
+    public int getWeight() {
         return weight;
     }
 
-    public void setWeight(long weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 

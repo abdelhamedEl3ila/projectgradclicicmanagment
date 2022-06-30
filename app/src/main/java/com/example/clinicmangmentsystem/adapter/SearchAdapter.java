@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.clinicmangmentsystem.DetalisSearchActivity;
 import com.example.clinicmangmentsystem.R;
-import com.example.clinicmangmentsystem.model.Datum;
 import com.example.clinicmangmentsystem.model.Search;
+import com.example.clinicmangmentsystem.model.Specilaty;
 
 import java.util.List;
 
@@ -46,9 +46,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         holder.searchcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent(v.getContext(), DetalisSearchActivity.class);
-                i.putExtra("specltityname",search.getNamespecialty());
+                i.putExtra("dignossname",search.getNamespecialty());
                 v.getContext().startActivity(i);
 
 

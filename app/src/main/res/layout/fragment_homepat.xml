@@ -314,76 +314,16 @@ System"
                 android:layout_marginStart="20dp"
                 />
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fillViewport="true">
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/recyclerviewspecialtity"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/_10sdp"
+          android:layout_marginStart="@dimen/_7ssp"
+          android:layout_marginEnd="@dimen/_10sdp"
+          android:layout_marginBottom="@dimen/_10sdp"
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/digoness"
-                        android:layout_width="100dp"
-                        android:layout_height="150dp"
-                        android:layout_margin="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/customedittext"
-                        android:drawableTop="@drawable/ic_stethoscope_doctor_svgrepo_com"
-                        android:paddingTop="5dp"
-                        android:text="Osteopathy"
-                        android:textAllCaps="false"
-                        android:textColor="@color/secondcolor" />
-
-                    <Button
-                        android:id="@+id/digoness1"
-                        android:layout_width="100dp"
-                        android:layout_height="150dp"
-                        android:layout_margin="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/customedittext"
-                        android:drawableTop="@drawable/ic_dentist_svgrepo_com__1_"
-                        android:paddingTop="5dp"
-                        android:text="Dentistry"
-                        android:textAllCaps="false"
-                        android:textColor="@color/secondcolor" />
-
-                    <Button
-                        android:id="@+id/digoness2"
-
-                        android:layout_width="100dp"
-                        android:layout_height="150dp"
-                        android:layout_margin="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/customedittext"
-                        android:drawableTop="@drawable/ic_i_pediatrics_svgrepo_com"
-                        android:paddingTop="5dp"
-                        android:text="Paediatrics"
-                        android:textAllCaps="false"
-                        android:textColor="@color/secondcolor" />
-
-                    <Button
-                        android:id="@+id/digoness3"
-
-                        android:layout_width="100dp"
-                        android:layout_height="150dp"
-                        android:layout_margin="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/customedittext"
-                        android:drawableTop="@drawable/ic_eyes_svgrepo_com"
-                        android:paddingTop="5dp"
-                        android:text="Eyes"
-                        android:textAllCaps="false"
-                        android:textColor="@color/secondcolor" />
-
-                </LinearLayout>
-            </HorizontalScrollView>
+          />
 
         </LinearLayout>
 

@@ -15,6 +15,7 @@ import com.android.car.ui.IFocusArea;
 import com.example.clinicmangmentsystem.model.Getmedical;
 import com.example.clinicmangmentsystem.model.MedicalResponse;
 
+import com.example.clinicmangmentsystem.model.ModelMedical;
 import com.example.clinicmangmentsystem.model.PostMedical;
 
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ save.setOnClickListener(new View.OnClickListener() {
         postMedical.setPatient_id(Patient_id);
         savedata(postMedical);
 
-        getdatamedical();
+      getdatamedical();
 
    }
 });
@@ -85,12 +86,15 @@ save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onResponse(Call<MedicalResponse> call, Response<MedicalResponse> response) {
                 if (response.isSuccessful()){
-                    MedicalResponse medicalResponse  =response.body();
-                    height.setText(response.body().getHeight());
-                    weight.setText(response.body().getWeight());
-                    digness.setText(response.body().getDiseases());
-                    spinner1.setText(response.body().getBloodType());
-                    spinner2.setText(response.body().getRelationshipState());
+                    String message = "Succsess ";
+                    Toast.makeText(MedicalActivity.this, message, Toast.LENGTH_LONG).show();
+
+//                    MedicalResponse medicalResponse  =response.body();
+//                    height.setText(response.body().getHeight());
+//                    weight.setText(response.body().getWeight());
+//                    digness.setText(response.body().getDiseases());
+//                    spinner1.setText(response.body().getBloodType());
+//                    spinner2.setText(response.body().getRelationshipState());
 
                 }
                 else {
@@ -116,21 +120,23 @@ save.setOnClickListener(new View.OnClickListener() {
 
     private void getdatamedical() {
 
-        Call<Getmedical> call= ApiClientapp.getservice().getallmedical("Bearer "+token,Patient_id);
-        call.enqueue(new Callback<Getmedical>() {
+        Call<ModelMedical> call = ApiClientapp.getservice().getallmedical("Bearer " + token);
+        call.enqueue(new Callback<ModelMedical>() {
             @Override
-            public void onResponse(Call<Getmedical> call, Response<Getmedical> response) {
-                if (response.isSuccessful())
-                {
-                    height.setText((int) response.body().getHeight());
-                    weight.setText((int) response.body().getWeight());
-                    spinner1.setText( response.body().getBloodType());
-                    spinner2.setText( response.body().getRelationshipState());
-                    digness.setText(response.body().getDiseases());
-                }
-                else {
-                    String message="ERROR ";
-                    Toast.makeText(MedicalActivity.this,message,Toast.LENGTH_LONG).show();;
+            public void onResponse(Call<ModelMedical> call, Response<ModelMedical> response) {
+                if (response.isSuccessful()) {
+                    String message = "Success ";
+                    Toast.makeText(MedicalActivity.this, message, Toast.LENGTH_LONG).show();
+
+                   height.setText( response.body().getData().getHeight());
+                    weight.setText( response.body().getData().getWeight());
+                   bloodtype= response.body().getData().getBloodType();
+                    spinner2.setText( response.body().getData().getRelationshipState());
+                    digness.setText( response.body().getData().getDiseases());
+                     spinner1.setText(bloodtype);
+                } else {
+                    String message = "ERROR ";
+                    Toast.makeText(MedicalActivity.this, message, Toast.LENGTH_LONG).show();
 
 
 
@@ -138,12 +144,14 @@ save.setOnClickListener(new View.OnClickListener() {
             }
 
             @Override
-            public void onFailure(Call<Getmedical> call, Throwable t) {
+            public void onFailure(Call<ModelMedical> call, Throwable t) {
                 String message = t.getLocalizedMessage();
-                Toast.makeText(MedicalActivity.this,message,Toast.LENGTH_LONG).show();;
+                Toast.makeText(MedicalActivity.this, message, Toast.LENGTH_LONG).show();
+
 
             }
-        });
-    }
 
+        });
+
+    }
 }
