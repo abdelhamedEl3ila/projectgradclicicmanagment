@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -33,17 +34,24 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DetalisSearchActivity extends AppCompatActivity{
-RecyclerView recyclerView ;
+    private  RecyclerView recyclerView ;
     private List<Datum> data=new ArrayList<>();
     private DoctorAdapter doctorAdapter ;
     private String token;
-     ProgressDialog progressDialog;
-     SearchView svSearch;
+    private String dignossname =null;
+    ProgressDialog progressDialog;
+    private String currentSearchText = "";
+    SearchView svSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalis_search);
         recyclerView=findViewById(R.id.Docdetailsrec);
+
+        Intent intent = getIntent();
+         dignossname = intent.getStringExtra("dignossname");
+         dignossname = intent.getStringExtra("specialityname");
+
         svSearch=findViewById(R.id.searchdoc);
         svSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -55,20 +63,14 @@ RecyclerView recyclerView ;
                 filter(newText);
                 return true;
             }
-            private void filter(String newText) {
-                List<Datum> filteredlist =new ArrayList<>();
-                for (Datum item :data){
-                        filteredlist.add(item);
-                }
-                doctorAdapter.filterlist(filteredlist);
-            }
+
+
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         doctorAdapter = new DoctorAdapter(this,data);
         recyclerView.setAdapter(doctorAdapter);
         SharedPreferences prfs = getSharedPreferences("Token", Context.MODE_PRIVATE);
         token = prfs.getString("token", "");
-
         progressdialog();
         getalldoctor();
 
@@ -103,12 +105,23 @@ void getalldoctor()
     call.enqueue(new Callback<DoctorModel>() {
         @Override
         public void onResponse(Call<DoctorModel> call, Response<DoctorModel> response) {
-            if (response.isSuccessful() && response.body().getData() != null) {
+            if (response.isSuccessful() && response.body().getData() != null&& dignossname==null) {
+                data.clear();
                 data.addAll(response.body().getData());
-
                 doctorAdapter.notifyDataSetChanged();
 
             }
+           else if (response.isSuccessful() && response.body().getData() != null&& dignossname!=null) {
+
+                data.clear();
+                data.addAll(response.body().getData());
+                doctorAdapter.notifyDataSetChanged();
+                filterselect(dignossname);
+
+            }
+
+
+
             else {
 
                 String message="error";
@@ -126,4 +139,43 @@ void getalldoctor()
         }});
 
 }
+    private void filter(String newText) {
+        List<Datum> filteredlist =new ArrayList<>();
+        for (Datum item :data){
+            if(item.getName().toLowerCase().contains(newText.toLowerCase()))
+            {
+
+                filteredlist.add(item);
+            }
+        }
+        doctorAdapter.filterlist(filteredlist);
+    }
+    private void filterselect(String newText) {
+        List<Datum> filter =new ArrayList<>();
+
+        for (Datum item :data){
+            if(item.getSpeciality().toLowerCase().contains(newText.toLowerCase()))
+            {
+                filter.add(item);
+            }
+        }
+        doctorAdapter.filterlist(filter);
+    }
+//    private void filter(String status)
+//    {
+//        List<Datum> filteredlist =new ArrayList<>();
+//        for (Datum item :data){
+//            if(item.getName().toLowerCase().contains(status.toLowerCase()))
+//            {
+//
+//                    filteredlist.add(item);
+//                }
+//            }
+//        doctorAdapter.filterlist(filteredlist);
+//        }
+
+
+//    public void triangleFilterTapped(View view) {
+//        filterList("seif");
+//    }
 }

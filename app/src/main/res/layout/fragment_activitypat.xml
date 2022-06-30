@@ -70,15 +70,7 @@
             android:textColor="@color/gray"
             android:textSize="15sp" />
 
-        <Button
-            android:id="@+id/bookdoctorbtn"
-            android:layout_width="222dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/custombutton"
-            android:text="Book a doctor"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
+
 
             />
 

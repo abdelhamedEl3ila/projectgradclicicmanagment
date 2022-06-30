@@ -139,21 +139,24 @@ private  String Rating;
         time.start();
         getdoctorprofile();
 
-
-
-
     }
 
     private void postreview() {
 
-        Call<ReviewModel>call= ApiClientapp.getservice().postreview("Bearer "+token,doctorid,postcom,Rating);
+        Call<ReviewModel>call= ApiClientapp.getservice().postreview("Bearer "+token,doctorid,"Good Doctor","5");
 
         call.enqueue(new Callback<ReviewModel>() {
             @Override
             public void onResponse(Call<ReviewModel> call, Response<ReviewModel> response) {
                 if (response.isSuccessful())
                 {
-                    Toast.makeText(context,"Success Comment",Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }
+                else {
+                    String message ="error";
+                    Toast.makeText(DoctorprofileActivity.this,message,Toast.LENGTH_LONG).show();;
+
+
                 }
 
             }

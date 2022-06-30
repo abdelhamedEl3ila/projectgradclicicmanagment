@@ -71,7 +71,7 @@ List<Doctortime> doctortimes ;
             super(itemView);
             day=itemView.findViewById(R.id.daytxt);
             time=itemView.findViewById(R.id.daytime);
-            book=itemView.findViewById(R.id.bookdoctorbtn);
+            book=itemView.findViewById(R.id.blooktxt);
             bookday=itemView.findViewById(R.id.bookcardview);
 
 

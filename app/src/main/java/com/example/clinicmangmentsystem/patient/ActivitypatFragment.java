@@ -1,6 +1,7 @@
 package com.example.clinicmangmentsystem.patient;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -15,10 +16,12 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.clinicmangmentsystem.ApiClientapp;
+import com.example.clinicmangmentsystem.DetalisSearchActivity;
 import com.example.clinicmangmentsystem.R;
 import com.example.clinicmangmentsystem.adapter.NewsAdapter;
 import com.example.clinicmangmentsystem.adapter.SchduleAdapter;
@@ -62,7 +65,6 @@ private SwipeRefreshLayout swipeRefreshLayout;
         token = prfs.getString("token", "");
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         swipeRefreshLayout=v.findViewById(R.id.swipeRefresh);
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

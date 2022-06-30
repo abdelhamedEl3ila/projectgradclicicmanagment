@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,14 @@ import android.widget.SearchView;
 import com.example.clinicmangmentsystem.DetalisSearchActivity;
 import com.example.clinicmangmentsystem.MedicalActivity;
 import com.example.clinicmangmentsystem.R;
+import com.example.clinicmangmentsystem.adapter.SearchAdapter;
+import com.example.clinicmangmentsystem.adapter.SpecialtyAdapter;
+import com.example.clinicmangmentsystem.doctor.DetailsActivity;
+import com.example.clinicmangmentsystem.model.Search;
+import com.example.clinicmangmentsystem.model.Specilaty;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomepatFragment extends Fragment {
@@ -26,10 +36,14 @@ LinearLayout searchbar;
 Button clinicvisitbtn;
 Button Medical_HIstoryview;
 Button calldoc;
+Button dintistbtn;
+   private RecyclerView recyclerView;
+ private   SpecialtyAdapter specialtyAdapter;
+    private List<Specilaty> specilaties = new ArrayList<>();
+
     public HomepatFragment() {
 
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,6 +56,21 @@ Button calldoc;
         Medical_HIstoryview= v.findViewById(R.id.viewMedicalHistory);
         clinicvisitbtn= v.findViewById(R.id.btnclinicvisit);
         calldoc= v.findViewById(R.id.btncaldoc);
+        recyclerView=v.findViewById(R.id.recyclerviewspecialtity);
+        recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext(),LinearLayoutManager.HORIZONTAL,true));
+        specialtyAdapter =new SpecialtyAdapter(v.getContext(),specilaties);
+        recyclerView.setAdapter(specialtyAdapter);
+        specilaties.add(new Specilaty(R.drawable.ic_i_pediatrics_svgrepo_com,"pediatrics"));
+        specilaties.add(new Specilaty(R.drawable.ic_radiology_svgrepo_com,"Radiologists"));
+        specilaties.add(new Specilaty(R.drawable.ic_neurology_svgrepo_com,"neurologists"));
+        specilaties.add(new Specilaty(R.drawable.ic_stethoscope_doctor_svgrepo_com,"Osteopathy"));
+        specilaties.add(new Specilaty(R.drawable.ic_eyes_svgrepo_com,"Eyes"));
+        specilaties.add(new Specilaty(R.drawable.ic_dentist_svgrepo_com__1_,"Dentistry"));
+        specilaties.add(new Specilaty(R.drawable.ic_orthopedic_svgrepo_com,"orthopedic"));
+
+
+
+
         calldoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +98,7 @@ Button calldoc;
         searchbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(),DetalisSearchActivity.class);
+                Intent i = new Intent(v.getContext(),SearchActivity.class);
                 v.getContext().startActivity(i);
             }
         });

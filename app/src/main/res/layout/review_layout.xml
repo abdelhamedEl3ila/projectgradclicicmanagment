@@ -82,12 +82,13 @@
         android:textSize="@dimen/_15ssp"
         app:layout_constraintBottom_toBottomOf="@+id/view14"
         app:layout_constraintEnd_toEndOf="@+id/view14"
-        app:layout_constraintHorizontal_bias="0.183"
-        app:layout_constraintStart_toStartOf="@+id/view14"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/view14"
-        app:layout_constraintVertical_bias="0.177" />
+        app:layout_constraintVertical_bias="0.13" />
 
     <ImageView
+        android:id="@+id/imageView5"
         android:layout_width="48dp"
         android:layout_height="54dp"
         android:src="@drawable/ic_baseline_person_24"
@@ -98,20 +99,20 @@
         app:layout_constraintTop_toTopOf="@+id/view14"
         app:layout_constraintVertical_bias="0.092" />
 
+
     <RatingBar
         android:id="@+id/barrate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="5"
-        android:visibility="visible"
         android:progressTint="#FFEB3B"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/view14"
         app:layout_constraintEnd_toEndOf="@+id/view14"
-        app:layout_constraintHorizontal_bias="0.321"
+        app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintStart_toStartOf="@+id/view14"
         app:layout_constraintTop_toBottomOf="@+id/userreview"
         app:layout_constraintVertical_bias="0.0" />
-
 
     <EditText
         android:id="@+id/contenttxt"
@@ -146,7 +147,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerreview"
         android:layout_width="@dimen/_290sdp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_5sdp"
         app:layout_constraintBottom_toBottomOf="parent"

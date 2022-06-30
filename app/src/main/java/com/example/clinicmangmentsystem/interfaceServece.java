@@ -3,9 +3,9 @@ package com.example.clinicmangmentsystem;
 import com.example.clinicmangmentsystem.model.DoctorModel;
 import com.example.clinicmangmentsystem.model.DoctorProf;
 import com.example.clinicmangmentsystem.model.Editresponse;
-import com.example.clinicmangmentsystem.model.Getmedical;
 import com.example.clinicmangmentsystem.model.Login;
 import com.example.clinicmangmentsystem.model.MedicalResponse;
+import com.example.clinicmangmentsystem.model.ModelMedical;
 import com.example.clinicmangmentsystem.model.PostMedical;
 import com.example.clinicmangmentsystem.model.ReviewModel;
 import com.example.clinicmangmentsystem.model.SelectDoctor;
@@ -31,10 +31,8 @@ public interface interfaceServece {
     );
 
     @GET("api/auth/getMedicalHistory")
-    Call<Getmedical> getallmedical(
-            @Header( "Authorization" ) String token,
-            @Path ("id") int i
-
+    Call<ModelMedical> getallmedical(
+            @Header( "Authorization" ) String token
     );
     @POST("api/auth/addMedicalHistory")
     Call<MedicalResponse> storeallmedical(
