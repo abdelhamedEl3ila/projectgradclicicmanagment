@@ -57,10 +57,10 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
 
 
          final Datum a = data.get(position);
-         String imageUrl = a.getPhoto();
-         String url = a.getPhoto();
-         final Datum doctorModel = data.get(position);
-        Picasso.with(context).load(imageUrl).into(holder.imagedoc);
+//         String imageUrl = a.getPhoto();
+//         String url = a.getPhoto();
+//         final Datum doctorModel = data.get(position);
+//        Picasso.with(context).load(imageUrl).into(holder.imagedoc);
         holder.docname.setText(data.get(position).getName());
         holder.specalityname.setText(data.get(position).getSpeciality());
         holder.timewait.setText( data.get(position).getWaitTime());
@@ -109,7 +109,7 @@ notifyDataSetChanged();
             super(itemView);
 
             docname = itemView.findViewById(R.id.Doctorname);
-            imagedoc=itemView.findViewById(R.id.imagedoc);
+//            imagedoc=itemView.findViewById(R.id.imagedoc);
             specalityname = itemView.findViewById(R.id.specialtiesname);
             location = itemView.findViewById(R.id.locationtxt);
             price = itemView.findViewById(R.id.pricetxt);

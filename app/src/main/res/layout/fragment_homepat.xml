@@ -221,6 +221,7 @@ System"
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewmap"
                 android:layout_width="363dp"
                 android:layout_height="110dp"
                 android:layout_gravity="center"

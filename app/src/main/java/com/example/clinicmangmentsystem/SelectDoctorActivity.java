@@ -85,7 +85,7 @@ ok.setOnClickListener(new View.OnClickListener() {
        String Docname = sharedPreferences.getString("Docname", "");
         String  specailty = sharedPreferences.getString("specailty", "");
         String  price = sharedPreferences.getString("price", "");
-        String photo = sharedPreferences.getString("photo", "");
+//        String photo = sharedPreferences.getString("photo", "");
         String location = sharedPreferences.getString("location", "");
         int id = sharedPreferences.getInt("id", 0);
         Intent intent = getIntent();
@@ -93,7 +93,7 @@ ok.setOnClickListener(new View.OnClickListener() {
         String Endtime = intent.getStringExtra("Endtime");
          day = intent.getStringExtra("day");
 
-   Picasso.with(context).load(photo).into(docimage);
+//   Picasso.with(context).load(photo).into(docimage);
         name.setText(Docname);
         speciality.setText(specailty);
         usernaem.setText(username);

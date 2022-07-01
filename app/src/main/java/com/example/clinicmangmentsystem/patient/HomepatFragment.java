@@ -3,6 +3,7 @@ package com.example.clinicmangmentsystem.patient;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,10 +18,8 @@ import android.widget.SearchView;
 import com.example.clinicmangmentsystem.DetalisSearchActivity;
 import com.example.clinicmangmentsystem.MedicalActivity;
 import com.example.clinicmangmentsystem.R;
-import com.example.clinicmangmentsystem.adapter.SearchAdapter;
 import com.example.clinicmangmentsystem.adapter.SpecialtyAdapter;
-import com.example.clinicmangmentsystem.doctor.DetailsActivity;
-import com.example.clinicmangmentsystem.model.Search;
+import com.example.clinicmangmentsystem.map.MapsActivity;
 import com.example.clinicmangmentsystem.model.Specilaty;
 
 import java.util.ArrayList;
@@ -37,6 +36,8 @@ Button clinicvisitbtn;
 Button Medical_HIstoryview;
 Button calldoc;
 Button dintistbtn;
+Button viewclinicnear;
+ConstraintLayout viewmap;
    private RecyclerView recyclerView;
  private   SpecialtyAdapter specialtyAdapter;
     private List<Specilaty> specilaties = new ArrayList<>();
@@ -56,10 +57,16 @@ Button dintistbtn;
         Medical_HIstoryview= v.findViewById(R.id.viewMedicalHistory);
         clinicvisitbtn= v.findViewById(R.id.btnclinicvisit);
         calldoc= v.findViewById(R.id.btncaldoc);
+        viewclinicnear= v.findViewById(R.id.viewclinicnear);
+
         recyclerView=v.findViewById(R.id.recyclerviewspecialtity);
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext(),LinearLayoutManager.HORIZONTAL,true));
         specialtyAdapter =new SpecialtyAdapter(v.getContext(),specilaties);
         recyclerView.setAdapter(specialtyAdapter);
+
+
+
+
 //        specilaties.add(new Specilaty(R.drawable.ic_stethoscope_doctor_svgrepo_com,"Other"));
         specilaties.add(new Specilaty(R.drawable.ic_dentist_svgrepo_com__1_,"Dentistry"));
         specilaties.add(new Specilaty(R.drawable.ic_baby_svgrepo_com,"NewBorn"));
@@ -76,7 +83,13 @@ Button dintistbtn;
 
 
 
-
+        viewclinicnear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(v.getContext(), MapsActivity.class);
+                v.getContext().startActivity(in);
+            }
+        });
         calldoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

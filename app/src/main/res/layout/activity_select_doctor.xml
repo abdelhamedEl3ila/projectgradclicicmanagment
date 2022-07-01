@@ -61,7 +61,7 @@
         android:id="@+id/photodoc"
         android:layout_width="@dimen/_70sdp"
         android:layout_height="@dimen/_50sdp"
-        android:src="@drawable/ic_doctor_svgrepo_com"
+        android:src="@drawable/healthcare_workers_medicine_covid_19_pandemic_self_quarantine_concept_smiling_attractive_doctor_scrubs_glasses_stethoscope_neck_cross_arms_chest_ready_help_patients_2"
         app:layout_constraintBottom_toBottomOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="@+id/view4"
         app:layout_constraintStart_toStartOf="@+id/view4"

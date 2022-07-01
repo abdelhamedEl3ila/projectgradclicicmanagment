@@ -80,7 +80,7 @@
         android:id="@+id/photodoc"
         android:layout_width="@dimen/_70sdp"
         android:layout_height="@dimen/_50sdp"
-        android:src="@drawable/ic_doctor_svgrepo_com"
+        android:src="@drawable/healthcare_workers_medicine_covid_19_pandemic_self_quarantine_concept_smiling_attractive_doctor_scrubs_glasses_stethoscope_neck_cross_arms_chest_ready_help_patients_2"
         app:layout_constraintBottom_toBottomOf="@+id/view6"
         app:layout_constraintEnd_toEndOf="@+id/view6"
         app:layout_constraintHorizontal_bias="0.066"
@@ -281,22 +281,24 @@ For Examination"
                 app:layout_constraintHorizontal_bias="0.2"
                 app:layout_constraintStart_toStartOf="@+id/view7"
                 app:layout_constraintTop_toBottomOf="@+id/textView19"
-                app:layout_constraintVertical_bias="0.066" />
+                app:layout_constraintVertical_bias="0.081" />
+
 
             <TextView
                 android:id="@+id/adress"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_80sdp"
                 android:layout_height="wrap_content"
-                android:text="cairo"
                 android:layout_marginTop="@dimen/_2sdp"
+                android:gravity="center"
+                android:text="cairo"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_13ssp"
                 app:layout_constraintBottom_toBottomOf="@+id/view7"
                 app:layout_constraintEnd_toEndOf="@+id/view7"
-                app:layout_constraintHorizontal_bias="0.202"
+                app:layout_constraintHorizontal_bias="0.113"
                 app:layout_constraintStart_toStartOf="@+id/view7"
                 app:layout_constraintTop_toBottomOf="@+id/imageView8"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.022" />
 
             <ImageView
                 android:id="@+id/imagerevews"
@@ -309,24 +311,22 @@ For Examination"
                 app:layout_constraintHorizontal_bias="0.261"
                 app:layout_constraintStart_toEndOf="@+id/imageView8"
                 app:layout_constraintTop_toBottomOf="@+id/view"
-                app:layout_constraintVertical_bias="0.0" />
-
+                app:layout_constraintVertical_bias="0.075" />
 
             <TextView
                 android:id="@+id/textView23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
                 android:text="Reviews"
-                android:layout_marginTop="@dimen/_2sdp"
 
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/view8"
                 app:layout_constraintEnd_toEndOf="@+id/view7"
-                app:layout_constraintHorizontal_bias="0.246"
+                app:layout_constraintHorizontal_bias="0.131"
                 app:layout_constraintStart_toEndOf="@+id/adress"
                 app:layout_constraintTop_toBottomOf="@+id/imagerevews"
-                app:layout_constraintVertical_bias="0.0" />
-
+                app:layout_constraintVertical_bias="0.166" />
 
             <ImageView
                 android:id="@+id/imagecall"
@@ -335,23 +335,23 @@ For Examination"
                 android:src="@drawable/ic_phone_call_svgrepo_com"
                 app:layout_constraintBottom_toTopOf="@+id/view8"
                 app:layout_constraintEnd_toEndOf="@+id/view7"
-                app:layout_constraintHorizontal_bias="0.507"
+                app:layout_constraintHorizontal_bias="0.514"
                 app:layout_constraintStart_toEndOf="@+id/imagerevews"
                 app:layout_constraintTop_toBottomOf="@+id/textView18"
-                app:layout_constraintVertical_bias="0.352" />
+                app:layout_constraintVertical_bias="0.385" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
                 android:text="Call"
-                android:layout_marginTop="@dimen/_2sdp"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/view8"
                 app:layout_constraintEnd_toEndOf="@+id/view7"
                 app:layout_constraintHorizontal_bias="0.524"
                 app:layout_constraintStart_toEndOf="@+id/textView23"
                 app:layout_constraintTop_toBottomOf="@+id/imagecall"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.062" />
 
             <View
                 android:id="@+id/view8"
@@ -427,9 +427,10 @@ For Examination"
 
             <ImageView
                 android:id="@+id/recphotoclinic1"
-                android:layout_width="@dimen/_80sdp"
-                android:layout_height="@dimen/_80sdp"
+                android:layout_width="100dp"
+                android:layout_height="109dp"
                 android:layout_marginTop="@dimen/_5sdp"
+                android:src="@mipmap/clinic2_foreground"
                 app:layout_constraintBottom_toBottomOf="@+id/view12"
                 app:layout_constraintEnd_toEndOf="@+id/view12"
                 app:layout_constraintHorizontal_bias="0.043"
@@ -441,20 +442,22 @@ For Examination"
                 android:id="@+id/recphotoclinic2"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_80sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-
                 android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:src="@mipmap/clinic4_foreground"
                 app:layout_constraintBottom_toBottomOf="@+id/view12"
                 app:layout_constraintEnd_toEndOf="@+id/view12"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/recphotoclinic1"
                 app:layout_constraintTop_toBottomOf="@+id/textView15"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.007" />
+
             <ImageView
                 android:id="@+id/recphotoclinic3"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_80sdp"
                 android:layout_marginTop="@dimen/_5sdp"
+                android:src="@mipmap/clinic5_foreground"
 
                 android:layout_marginStart="@dimen/_5sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/view12"
@@ -467,6 +470,8 @@ For Examination"
                 android:id="@+id/recphotoclinic4"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_80sdp"
+                android:src="@mipmap/clinic11_foreground"
+
                 app:layout_constraintBottom_toBottomOf="@+id/view12"
                 app:layout_constraintEnd_toEndOf="@+id/view12"
                 app:layout_constraintHorizontal_bias="0.043"

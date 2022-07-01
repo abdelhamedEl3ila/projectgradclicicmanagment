@@ -1,6 +1,5 @@
 package com.example.clinicmangmentsystem.nanonets;
 
-import com.example.clinicmangmentsystem.doctor.ApiInterface;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -23,8 +22,8 @@ public class NanonetsClient {
     }
 
 
-    public ApiInterface getApi(){
-        return retrofit.create(ApiInterface.class);
+    public NanonetInterface getApi(){
+        return retrofit.create(NanonetInterface.class);
     }
 
 }

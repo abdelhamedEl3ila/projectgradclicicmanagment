@@ -7,4 +7,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <item name="cardviewnews" type="id" />
+    <string name="new_line">\u000A</string>
+
 </resources>
