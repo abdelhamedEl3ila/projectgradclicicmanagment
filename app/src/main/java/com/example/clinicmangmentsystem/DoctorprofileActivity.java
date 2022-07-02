@@ -1,14 +1,19 @@
 package com.example.clinicmangmentsystem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -22,11 +27,13 @@ import android.widget.Toast;
 
 import com.example.clinicmangmentsystem.adapter.ReviewAdapter;
 import com.example.clinicmangmentsystem.adapter.TimeAdapter;
+import com.example.clinicmangmentsystem.map.MapdocActivity;
 import com.example.clinicmangmentsystem.model.DoctorProd;
 import com.example.clinicmangmentsystem.model.DoctorProf;
 import com.example.clinicmangmentsystem.model.Doctortime;
 import com.example.clinicmangmentsystem.model.ReviewModel;
 import com.example.clinicmangmentsystem.model.ShowAllReview;
+import com.example.clinicmangmentsystem.patient.MainActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -39,8 +46,8 @@ import retrofit2.Response;
 public class DoctorprofileActivity extends AppCompatActivity {
 RecyclerView timerecyclerView;
 TextView name ,price, specailty,timewait,location;
-ImageView docprof ,mapdoc;
-ImageView review,call;
+ImageView docprof ,mapdoc ,imagecall;
+ImageView review,call , locationdoc;
 ImageView clinic1,clinic2 ,clinic3 ,clinic4,clinic5,clinic6;
 private String token ;
 private List<Doctortime>doctortimes= new ArrayList<>();
@@ -49,23 +56,37 @@ private TimeAdapter timeAdapter ;
 private ReviewAdapter reviewAdapter ;
 private Context context;
 private Dialog dialog;
+private Dialog dialogcall;
 private int doctorid;
 ProgressDialog progressDialog;
 private String Name;
 private int id;
 private  String postcom;
 private  String Rating;
+private  String latitude;
+private  String phoennumber;
+private  String longtude;
+private RatingBar ratingBarprofile;
+private  static int PERMISSION_CODE= 100;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctorprofile);
+
+        if (ContextCompat.checkSelfPermission(DoctorprofileActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+
+            ActivityCompat.requestPermissions(DoctorprofileActivity.this,new String[]{Manifest.permission.CALL_PHONE},PERMISSION_CODE);
+
+        }
         timerecyclerView=findViewById(R.id.recdoctortime);
         name=findViewById(R.id.namedocprofile);
         specailty=findViewById(R.id.specialtityname);
         docprof=findViewById(R.id.photodoc);
         timewait=findViewById(R.id.waittimetixt);
         price=findViewById(R.id.price);
+        ratingBarprofile=findViewById(R.id.ratingBarprofile);
         clinic1=findViewById(R.id.recphotoclinic1);
         clinic2=findViewById(R.id.recphotoclinic2);
         clinic3=findViewById(R.id.recphotoclinic3);
@@ -74,7 +95,17 @@ private  String Rating;
         clinic6=findViewById(R.id.recphotoclinic6);
         review=findViewById(R.id.imagerevews);
         mapdoc=findViewById(R.id.imageView8);
+        showcalldilog();
+        mapdoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getmap();
+            }
+        });
+
         call=findViewById(R.id.imagecall);
+        ratingBarprofile.setRating(5);
         location=findViewById(R.id.adress);
         SharedPreferences prefreance = getSharedPreferences("User", Context.MODE_PRIVATE);
         Name = prefreance.getString("username", "");
@@ -93,23 +124,32 @@ private  String Rating;
         RatingBar Rate = dialog.findViewById(R.id.barrate);
         EditText post = dialog.findViewById(R.id.contenttxt);
         TextView name = dialog.findViewById(R.id.userreview);
-        Button postreview = dialog.findViewById(R.id.postreviewbtn);
+        TextView postreview = dialog.findViewById(R.id.postreviewbtn);
         name.setText(Name);
         postcom=post.getText().toString();
         Rating= String.valueOf(Rate.getRating());
         recyclerView1.setLayoutManager(new LinearLayoutManager(this));
         reviewAdapter = new ReviewAdapter(this,reviewModels);
         recyclerView1.setAdapter(reviewAdapter);
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogcall.show();
+            }
+        });
         postreview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                postreview();
+                ReviewModel reviewModel = new ReviewModel();
+                reviewModel.setContent(post.getText().toString());
+                reviewModel.setRate(String.valueOf(Rate.getNumStars()));
+
+                postreview(reviewModel);
             }
         });
         review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 showreview();
                 dialog.show();
             }
@@ -118,7 +158,6 @@ private  String Rating;
          id = intent.getIntExtra("id",0);
         SharedPreferences prfs = getSharedPreferences("Token", Context.MODE_PRIVATE);
         token = prfs.getString("token", "");
-
 
 
         progressDialog = new ProgressDialog(DoctorprofileActivity.this);
@@ -142,9 +181,18 @@ private  String Rating;
 
     }
 
-    private void postreview() {
+    private void getmap() {
 
-        Call<ReviewModel>call= ApiClientapp.getservice().postreview("Bearer "+token,doctorid,"Good Doctor","5");
+        Intent i = new Intent(DoctorprofileActivity.this, MapdocActivity.class);
+        startActivity(i);
+
+    }
+
+    private void postreview(ReviewModel reviewModel) {
+
+
+
+        Call<ReviewModel>call= ApiClientapp.getservice().postreview("Bearer "+token,doctorid,reviewModel);
 
         call.enqueue(new Callback<ReviewModel>() {
             @Override
@@ -205,6 +253,9 @@ private  String Rating;
                     price.setText(response.body().getDoctor().getExaminationPrice());
                     location.setText(response.body().getDoctor().getGovernorate());
                     doctorid=response.body().getDoctor().getId();
+                    latitude=response.body().getDoctor().getLatitude();
+                    longtude=response.body().getDoctor().getLongitude();
+                    phoennumber=response.body().getDoctor().getMobileNumber();
                     doctortimes.addAll(response.body().getDoctorTime());
                     SharedPreferences preferences = getSharedPreferences("Profile", getApplicationContext().MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -215,6 +266,8 @@ private  String Rating;
                     editor.putString("waittime", response.body().getDoctor().getWaitTime() );
                     editor.putString("location", response.body().getDoctor().getGovernorate() );
                     editor.putInt("id", response.body().getDoctor().getId() );
+                    editor.putString("latitude", response.body().getDoctor().getLatitude() );
+                    editor.putString("longtude", response.body().getDoctor().getLongitude());
                     editor.commit();
                     timeAdapter.notifyDataSetChanged();
                 }
@@ -257,6 +310,38 @@ private  String Rating;
 
             }
         });
+
+    }
+    private void showcalldilog()
+    {
+
+        dialogcall = new Dialog(this);
+        dialogcall.setContentView(R.layout.calldilog);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            dialogcall.getWindow().setBackgroundDrawable(getDrawable(R.drawable.custom_dialog_background));
+        }
+        dialogcall.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialogcall.setCancelable(true); //Optional
+        dialogcall.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation; //Setting the animations to dialog
+        Button call = dialogcall.findViewById(R.id.btn_call);
+        Button Cancel = dialogcall.findViewById(R.id.btn_cancel);
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String phoneno = phoennumber;
+                Intent i = new Intent(Intent.ACTION_CALL);
+                i.setData(Uri.parse("tel:"+phoneno));
+                startActivity(i);
+            }
+        });
+        Cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogcall.dismiss();
+            }
+        });
+
+
 
     }
 }

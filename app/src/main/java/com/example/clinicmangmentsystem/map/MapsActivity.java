@@ -17,16 +17,21 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Looper;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.clinicmangmentsystem.adapter.DoctorAdapter;
 import com.example.clinicmangmentsystem.model.Datum;
 import com.example.clinicmangmentsystem.model.DoctorModel;
 import com.google.android.gms.common.ConnectionResult;
@@ -57,11 +62,10 @@ import retrofit2.Response;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 5445;
-   private double latitudee;
-   private double longtudee;
-
-    ArrayList<Double> latitude = null;
-    ArrayList<Double> longtude = null;
+    private String latitudee;
+    private String longtudee;
+  private   Double latitude;
+   private Double longtude ;
     private String namedoctor;
     private GoogleMap googleMap;
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -70,14 +74,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private boolean firstTimeFlag = true;
     private LatLng latLng;
     private List<Datum> data = new ArrayList<>();
+    private List<Datum>selectedFilters= new ArrayList <>();
+    private DoctorAdapter doctorAdapter;
     private Dialog dialog ;
     private TextView name, price,specilaty,address,wait;
-
     private final View.OnClickListener clickListener = view -> {
         if (view.getId() == R.id.currentLocationImageButton && googleMap != null && currentLocation != null)
             animateCamera(currentLocation);
     };
-
     private final LocationCallback mLocationCallback = new LocationCallback() {
 
         @Override
@@ -94,7 +98,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             getalldoctoronamap();
         }
     };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,24 +106,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         supportMapFragment.getMapAsync(this);
         findViewById(R.id.currentLocationImageButton).setOnClickListener(clickListener);
         latLng  = new LatLng(-34,151);
-//        dialog = new Dialog(this);
-//        dialog.setContentView(R.layout.mapdialog);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.custom_dialog_background));
-//        }
-//        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//        dialog.setCancelable(true); //Optional
-//        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation; //Setting the animations to dialog
-//         name = dialog.findViewById(R.id.Doctornamemap);
-//         price = dialog.findViewById(R.id.pricetxtmap);
-//         specilaty = dialog.findViewById(R.id.specialtiesnamemap);
-//         address = dialog.findViewById(R.id.locationtxtmap);
-//         wait = dialog.findViewById(R.id.waitingtimetxtmap);
-
-
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.mapdialog);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.custom_dialog_background));
+        }
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(true); //Optional
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation; //Setting the animations to dialog
+        Window window = dialog.getWindow();
+        WindowManager.LayoutParams wlp =window.getAttributes();
+        wlp.gravity= Gravity.BOTTOM;
+        wlp.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+        window.setAttributes(wlp);
+       RecyclerView  recyclerView = dialog.findViewById(R.id.recycleronmap);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        doctorAdapter = new DoctorAdapter(this, data);
+        recyclerView.setAdapter(doctorAdapter);
     }
-
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         LatLng latLng1  = new LatLng(-34,151);
@@ -141,7 +144,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         fusedLocationProviderClient.requestLocationUpdates(locationRequest, mLocationCallback, Looper.myLooper());
     }
-
     private boolean isGooglePlayServicesAvailable() {
         GoogleApiAvailability googleApiAvailability = GoogleApiAvailability.getInstance();
         int status = googleApiAvailability.isGooglePlayServicesAvailable(this);
@@ -153,7 +155,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         return false;
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -164,12 +165,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 startCurrentLocationUpdates();
         }
     }
-
     private void animateCamera(@NonNull Location location) {
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(getCameraPositionWithBearing(latLng)));
     }
-
     @NonNull
     private CameraPosition getCameraPositionWithBearing(LatLng latLng) {
         return new CameraPosition.Builder().target(latLng).zoom(16).build();
@@ -182,7 +181,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         else
             MarkerAnimation.animateMarkerToGB(currentLocationMarker, latLng, new LatLngInterpolator.Spherical());
     }
-
     @Override
     protected void onStop() {
         super.onStop();
@@ -209,55 +207,49 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void getalldoctoronamap()
     {        SharedPreferences prfs = getSharedPreferences("Token", Context.MODE_PRIVATE);
         String token = prfs.getString("token", "");
-
         Call<DoctorModel> call= ApiClientapp.getservice().getallDoctor("Bearer"+token);
         call.enqueue(new Callback<DoctorModel>() {
             @Override
             public void onResponse(Call<DoctorModel> call, Response<DoctorModel> response) {
-                if (response.isSuccessful())
-                {
+                if (response.isSuccessful()) {
                     data.clear();
                     data.addAll(response.body().getData());
-                    for(int i = 0;i<data.size();i++)
-                    {
-
-                        googleMap.addMarker(new MarkerOptions().position(new LatLng( Double.parseDouble(data.get(i).getLatitude()),  Double.parseDouble(data.get(i).getLongitude()))).title("Dr " + data.get(i).getName()).snippet(" specilty:"+data.get(i).getSpeciality()));
+                    for (int i = 0; i < data.size(); i++) {
+                        latitude = Double.valueOf(((data.get(i).getLatitude())));
+                        longtude = Double.valueOf(((data.get(i).getLongitude())));
+                        String docname = data.get(i).getName();
+                        googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longtude)).title("Dr " + docname).snippet(" specialty:" + data.get(i).getSpeciality()));
 
                     }
 
-
-
                 }
+
                 else {
                     String message = "ERROR ";
                     Toast.makeText(MapsActivity.this, message, Toast.LENGTH_LONG).show();
 
                 }
-
-
             }
-
             @Override
             public void onFailure(Call<DoctorModel> call, Throwable t) {
                 String message = t.getLocalizedMessage();
                 Toast.makeText(MapsActivity.this, message, Toast.LENGTH_LONG).show();
-
             }
         });
-
     }
 
-    private void filerselectgovern(String lutitude , String longtude) {
-        List<Datum> filermultilist =new ArrayList<>();
-
-        for (Datum item : data) {
-            if (item.getGovernorate().toLowerCase().contains(lutitude.toLowerCase())&& item.getSpeciality().toLowerCase().contains(longtude.toLowerCase()))
-            {
-                filermultilist.add(item);
-            }
-
-        }
-    }
+//    private void filerselectgovern(String lutitude , String longtude) {
+//        List<Datum> filermultilist =new ArrayList<>();
+//
+//        for (Datum item : data) {
+//            if (item.getLatitude().toLowerCase().contains(lutitude.toLowerCase())&& item.getLongitude().toLowerCase().contains(longtude.toLowerCase()))
+//            {
+//                filermultilist.add(item);
+//            }
+//
+//        }
+//        doctorAdapter.filterlist(filermultilist);
+//    }
 
 
 }

@@ -48,8 +48,6 @@ public class SignuppatientActivity extends AppCompatActivity {
                     ".{4,}" +               //at least 4 characters
                     "$");
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +59,7 @@ public class SignuppatientActivity extends AppCompatActivity {
         email=findViewById(R.id.emailpat);
         phonenumber=findViewById(R.id.phonenumber);
         next=findViewById(R.id.nextpatientbtn);
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,10 +79,22 @@ public class SignuppatientActivity extends AppCompatActivity {
                 rejesterRequest.setPassword(password.getText().toString());
                 rejesterRequest.setMobile_number(phonenumber.getText().toString());
                 rejesterRequest.setName(fristusername.getText().toString());
-                rejesterRequest.setGender(checkBoxA.getText().toString());
-                rejesterRequest.setPhoto(checkBoxA.getText().toString());
+                if (checkBoxA.isChecked())
+                {
+                    rejesterRequest.setGender("Male");
 
-                registerpatient(rejesterRequest);
+                }
+                else if (checkBoxB.isChecked()){
+
+                    rejesterRequest.setGender("Famale");
+                }
+                else {
+                    String message="enter your gender";
+                    Toast.makeText(SignuppatientActivity.this,message,Toast.LENGTH_LONG).show();;
+
+                }
+                rejesterRequest.setPhoto("null");
+//                registerpatient(rejesterRequest);
                 savedata(rejesterRequest);
             }});
 
@@ -132,12 +143,12 @@ public class SignuppatientActivity extends AppCompatActivity {
             public void onResponse(Call<RejesterResponse> call, Response<RejesterResponse> response) {
                 if (response.isSuccessful()){
                     RejesterResponse rejesterResponse = response.body();
-                    Intent ii = new Intent(SignuppatientActivity.this, MainActivity.class);
+                    Intent ii = new Intent(SignuppatientActivity.this, LoginActivity.class);
                     startActivity(ii);
 
                 }
                 else {
-                    String message="email or password is not true";
+                    String message="please check your information";
                     Toast.makeText(SignuppatientActivity.this,message,Toast.LENGTH_LONG).show();;
 
                 }
@@ -196,17 +207,6 @@ public class SignuppatientActivity extends AppCompatActivity {
             return true;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
     public void onCheckboxClicked(View view) {
         switch (view.getId()) {
 
@@ -224,42 +224,5 @@ public class SignuppatientActivity extends AppCompatActivity {
                 break;
         }
     }
-    public void registerpatient (RejesterRequest rejesterRequest)
-    {
-        Call<RejesterResponse>rejesterResponseCall = ApiClientapp.getservice().registeruser(rejesterRequest);
-        rejesterResponseCall.enqueue(new Callback<RejesterResponse>() {
-            @Override
-            public void onResponse(Call<RejesterResponse> call, Response<RejesterResponse> response) {
-
-                if (response.isSuccessful())
-                {
-                    startActivity(new Intent(SignuppatientActivity.this,LoginActivity.class));
-                    finish();
-
-                }else {
-                    String message = "an error occured please try again";
-                    Toast.makeText(SignuppatientActivity.this,message,Toast.LENGTH_LONG);
-
-
-                }
-
-
-            }
-
-
-            @Override
-            public void onFailure(Call<RejesterResponse> call, Throwable t) {
-
-                String message = t.getLocalizedMessage();
-                Toast.makeText(SignuppatientActivity.this,message,Toast.LENGTH_LONG);
-
-            }
-        });
-
-
-    }
-
-
-
 
     }

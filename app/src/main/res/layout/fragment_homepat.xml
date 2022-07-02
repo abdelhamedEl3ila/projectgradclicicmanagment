@@ -70,15 +70,17 @@ System"
                     android:textStyle="bold" />
 
                 <SearchView
+                    android:id="@+id/searchspecilaty"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginBottom="16dp"
+                    android:enabled="false"
                     android:background="@drawable/search"
                     android:iconifiedByDefault="false"
                     android:queryBackground="@android:color/transparent"
-                    android:queryHint="Search by Specialize, doctor name" />
+                    android:queryHint="Search by Specialize, address" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -119,21 +121,22 @@ System"
                     android:paddingTop="8dp"
                     android:layout_gravity="center"
                     />
+
                 <Button
+                    android:id="@+id/fristaidbtn"
                     android:layout_width="115dp"
                     android:layout_height="105dp"
+                    android:layout_gravity="center"
                     android:layout_marginStart="10dp"
+                    android:background="@drawable/customedittext"
+                    android:drawableTop="@drawable/ic_undraw_information_tab_re_f0w3_1"
+                    android:elevation="5dp"
+                    android:paddingTop="10dp"
                     android:text="Frist Aid"
                     android:textAllCaps="false"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/customedittext"
-                    android:elevation="5dp"
-                    android:drawableTop="@drawable/ic_undraw_information_tab_re_f0w3_1"
-                    android:paddingTop="10dp"
-                    />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

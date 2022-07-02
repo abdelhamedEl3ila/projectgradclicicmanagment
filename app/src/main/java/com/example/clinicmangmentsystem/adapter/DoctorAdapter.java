@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,9 +36,9 @@ import retrofit2.Callback;
 
 public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder>
 {
-    Context context;
+     Context context;
      List<Datum> data;
-    List<Datum> moviesListAll;
+     List<Datum> moviesListAll;
     public DoctorAdapter(Context context, List<Datum> data) {
         this.context = context;
         this.data = data;
@@ -104,6 +105,7 @@ notifyDataSetChanged();
         ImageView imagedoc,imagespeclaity;
         ConstraintLayout Doctorview;
         Button Bookbtn;
+        RatingBar ratingBarsearch;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -117,6 +119,9 @@ notifyDataSetChanged();
             imagespeclaity = itemView.findViewById(R.id.specialtyicon);
             Doctorview=itemView.findViewById(R.id.cardviewdoctor);
             Bookbtn=itemView.findViewById(R.id.reservationbtn);
+            ratingBarsearch=itemView.findViewById(R.id.ratingBarsearch);
+            ratingBarsearch.setRating(5);
+
 
 
         }

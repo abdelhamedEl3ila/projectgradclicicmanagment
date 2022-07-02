@@ -1,36 +1,54 @@
 package com.example.clinicmangmentsystem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.car.ui.IFocusArea;
+import com.example.clinicmangmentsystem.model.Datum;
 import com.example.clinicmangmentsystem.model.Getmedical;
 import com.example.clinicmangmentsystem.model.MedicalResponse;
 
 import com.example.clinicmangmentsystem.model.ModelMedical;
 import com.example.clinicmangmentsystem.model.PostMedical;
+import com.example.clinicmangmentsystem.patient.HomepatFragment;
+import com.example.clinicmangmentsystem.patient.ProfilepatFragment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MedicalActivity extends AppCompatActivity  {
-EditText spinner1,spinner2;
+Spinner spinner1,spinner2;
 String bloodtype , realtion ;
+String bloodtypee , realtionn ;
 EditText height ,weight, digness;
-Button save;
-    String token;
-    private ArrayList<Getmedical> getmedicals = new ArrayList<>();
+private List<Getmedical> data = new ArrayList<>();
+TextView save;
+ImageButton backbutton;
+ private String heightpref;
+ private String weightpref;
+ private String bloodtypepref;
+ private String relationpref;
+ private String dignesspref;
+    private boolean selectionControl = true;
+   private String token;
     private int Patient_id;
 
     @Override
@@ -39,24 +57,58 @@ Button save;
         setContentView(R.layout.activity_medical);
         spinner1 = findViewById(R.id.spinner1);
         spinner2 = findViewById(R.id.spinner2);
-        SharedPreferences preferences=getSharedPreferences("Token", getApplicationContext().MODE_PRIVATE);
-        token=preferences.getString("token",null);
-Patient_id=preferences.getInt("Patient_id",0);
+        backbutton = findViewById(R.id.backbutton);
+
+//        SharedPreferences preferences = getSharedPreferences("Medical", getApplicationContext().MODE_PRIVATE);
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.putString("height",height.getText().toString());
+//
+//        editor.commit();
+//        getdata();
+       getdatamedical();
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.medical_history,new HomepatFragment()).commit();
+            }
+        });
+        SharedPreferences preferences1=getSharedPreferences("Token", getApplicationContext().MODE_PRIVATE);
+        token=preferences1.getString("token",null);
+        Patient_id=preferences1.getInt("Patient_id",0);
 save= findViewById(R.id.savedata);
 height= findViewById(R.id.editTextheight);
 weight= findViewById(R.id.editTextweight);
 digness= findViewById(R.id.digness);
+        ArrayAdapter<CharSequence> adapter1=  ArrayAdapter.createFromResource(this,R.array.Relation, android.R.layout.simple_spinner_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(adapter1);
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parant, View view, int i, long l) {
+                 bloodtype = parant.getItemAtPosition(i).toString();
 
-//        String []value ={"A","b","O","AB"};
-//        ArrayList<String>arrayList=new ArrayList<>(Arrays.asList(value));
-//        ArrayAdapter<String>Arrayadapter= new ArrayAdapter<>(this,R.layout.spinner,arrayList);
-//        spinner1.setAdapter(Arrayadapter);
-//        String []value1 ={"Single","Married"};
-//        ArrayList<String>arrayList1=new ArrayList<>(Arrays.asList(value1));
-//        ArrayAdapter<String>Arrayadapte1= new ArrayAdapter<>(this,R.layout.spinner,arrayList1);
-//        spinner2.setAdapter(Arrayadapte1);
-//        bloodtype= spinner1.getSelectedItem().toString();
-//        realtion= spinner2.getSelectedItem().toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+ArrayAdapter<CharSequence> adapter=  ArrayAdapter.createFromResource(this,R.array.blood_type, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(adapter);
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parant, View view, int i, long l) {
+                 realtion = parant.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 save.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -65,13 +117,22 @@ save.setOnClickListener(new View.OnClickListener() {
         postMedical.setHeight(height.getText().toString());
         postMedical.setWeight(weight.getText().toString());
         postMedical.setDiseases(digness.getText().toString());
-        postMedical.setBloodType(spinner1.getText().toString());
-        postMedical.setRelationshipState(spinner2.getText().toString());
+        postMedical.setBloodType(spinner1.getSelectedItem().toString());
+        postMedical.setRelationshipState(spinner2.getSelectedItem().toString());
         postMedical.setPatient_id(Patient_id);
+//        heightpref= height.getText().toString();
+//        weightpref= weight.getText().toString();
+//        bloodtypepref= spinner1.getSelectedItem().toString();
+//        relationpref= spinner2.getSelectedItem().toString();
+//        dignesspref= digness.getText().toString();
+        //        editor.putString("weight", weightpref);
+//        editor.putString("bloodtype",bloodtypepref);
+//        editor.putString("relationship", relationpref);
+//        editor.putString("digness", dignesspref);
+
+
         savedata(postMedical);
-
-      getdatamedical();
-
+//        getdatamedical();
    }
 });
 
@@ -86,15 +147,9 @@ save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onResponse(Call<MedicalResponse> call, Response<MedicalResponse> response) {
                 if (response.isSuccessful()){
-                    String message = "Succsess ";
-                    Toast.makeText(MedicalActivity.this, message, Toast.LENGTH_LONG).show();
 
-//                    MedicalResponse medicalResponse  =response.body();
-//                    height.setText(response.body().getHeight());
-//                    weight.setText(response.body().getWeight());
-//                    digness.setText(response.body().getDiseases());
-//                    spinner1.setText(response.body().getBloodType());
-//                    spinner2.setText(response.body().getRelationshipState());
+                    String message = "Succsess";
+                    Toast.makeText(MedicalActivity.this, message, Toast.LENGTH_LONG).show();
 
                 }
                 else {
@@ -103,7 +158,6 @@ save.setOnClickListener(new View.OnClickListener() {
 
                 }
             }
-
 
             @Override
             public void onFailure(Call<MedicalResponse> call, Throwable t) {
@@ -114,44 +168,74 @@ save.setOnClickListener(new View.OnClickListener() {
         });
 
 
-
-
     }
-
     private void getdatamedical() {
-
-        Call<ModelMedical> call = ApiClientapp.getservice().getallmedical("Bearer " + token);
+        SharedPreferences preferences1=getSharedPreferences("Token", MODE_PRIVATE);
+      String  token=preferences1.getString("token",null);
+        Call<ModelMedical>call=ApiClientapp.getservice().getallmedical("Bearer "+token);
         call.enqueue(new Callback<ModelMedical>() {
+
             @Override
             public void onResponse(Call<ModelMedical> call, Response<ModelMedical> response) {
                 if (response.isSuccessful()) {
-                    String message = "Success ";
-                    Toast.makeText(MedicalActivity.this, message, Toast.LENGTH_LONG).show();
+                    data.clear();
+                    data.addAll(response.body().getData());
+                    Log.d("TAG",token);
+                    filterselect(1);
 
-                   height.setText( response.body().getData().getHeight());
-                    weight.setText( response.body().getData().getWeight());
-                   bloodtype= response.body().getData().getBloodType();
-                    spinner2.setText( response.body().getData().getRelationshipState());
-                    digness.setText( response.body().getData().getDiseases());
-                     spinner1.setText(bloodtype);
+                    for (int i = 0; i < data.size(); i++) {
+
+                                height.setText(data.get(i).getHeight());
+                                weight.setText(data.get(i).getWeight());
+                                bloodtypee = data.get(i).getBloodType();
+                                realtionn = data.get(i).getRelationshipState();
+                                for(int j= 0; j < spinner1.getAdapter().getCount(); j++)
+                                {
+                                    if(spinner1.getAdapter().getItem(j).toString().contains(bloodtypee))
+                                    {
+                                        spinner1.setSelection(j);
+                                    }
+                                }
+                                for(int j= 0; j < spinner2.getAdapter().getCount(); j++)
+                                {
+                                    if(spinner2.getAdapter().getItem(j).toString().contains(realtionn))
+                                    {
+                                        spinner2.setSelection(j);
+                                    }
+                                }
+                                digness.setText( data.get(i).getDiseases());
+
+                            }
+
+
+
                 } else {
                     String message = "ERROR ";
                     Toast.makeText(MedicalActivity.this, message, Toast.LENGTH_LONG).show();
-
-
-
                 }
-            }
+                }
+        @Override
+        public void onFailure(Call<ModelMedical> call, Throwable t) {
+            String message = t.getLocalizedMessage();
+            Toast.makeText(MedicalActivity.this, message, Toast.LENGTH_LONG).show();
 
-            @Override
-            public void onFailure(Call<ModelMedical> call, Throwable t) {
-                String message = t.getLocalizedMessage();
-                Toast.makeText(MedicalActivity.this, message, Toast.LENGTH_LONG).show();
+        }
+    });
+        }
 
 
-            }
 
-        });
 
-    }
-}
+
+    private void filterselect(int id){
+        List<Getmedical> filter=new ArrayList<>();
+        for(Getmedical item1:data){
+        if(item1.getPatientID()==id){
+        filter.add(item1);
+
+        }
+
+        }
+        }
+        }
+

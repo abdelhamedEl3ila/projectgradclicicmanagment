@@ -45,7 +45,6 @@ public class DetalisSearchActivity extends AppCompatActivity {
     private String specialityname = null;
     private String governorate= null;
     private List<Datum>selectedFilters= new ArrayList <>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

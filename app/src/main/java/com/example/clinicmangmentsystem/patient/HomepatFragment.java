@@ -35,7 +35,7 @@ LinearLayout searchbar;
 Button clinicvisitbtn;
 Button Medical_HIstoryview;
 Button calldoc;
-Button dintistbtn;
+Button fristaidbtn;
 Button viewclinicnear;
 ConstraintLayout viewmap;
    private RecyclerView recyclerView;
@@ -58,15 +58,14 @@ ConstraintLayout viewmap;
         clinicvisitbtn= v.findViewById(R.id.btnclinicvisit);
         calldoc= v.findViewById(R.id.btncaldoc);
         viewclinicnear= v.findViewById(R.id.viewclinicnear);
+        searchView= v.findViewById(R.id.searchspecilaty);
+        fristaidbtn= v.findViewById(R.id.fristaidbtn);
 
         recyclerView=v.findViewById(R.id.recyclerviewspecialtity);
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext(),LinearLayoutManager.HORIZONTAL,true));
         specialtyAdapter =new SpecialtyAdapter(v.getContext(),specilaties);
         recyclerView.setAdapter(specialtyAdapter);
-
-
-
-
+searchView.setEnabled(false);
 //        specilaties.add(new Specilaty(R.drawable.ic_stethoscope_doctor_svgrepo_com,"Other"));
         specilaties.add(new Specilaty(R.drawable.ic_dentist_svgrepo_com__1_,"Dentistry"));
         specilaties.add(new Specilaty(R.drawable.ic_baby_svgrepo_com,"NewBorn"));
@@ -81,8 +80,20 @@ ConstraintLayout viewmap;
 
 
 
-
-
+        fristaidbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(v.getContext(),FristAidActivity.class);
+                v.getContext().startActivity(i);
+            }
+        });
+searchView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent i = new Intent(v.getContext(),SearchActivity.class);
+        v.getContext().startActivity(i);
+    }
+});
         viewclinicnear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,10 +1,14 @@
 package com.example.clinicmangmentsystem.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +28,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     Context context;
     List<Search> list;
 
+
     public SearchAdapter(Context context, List<Search> list) {
         this.context = context;
         this.list = list;
@@ -40,7 +45,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull SearchAdapter.ViewHolder holder, int position) {
         final Search search = list.get(position);
-
         holder.speclitesname.setText(search.getNamespecialty());
         holder.speaclityicon.setImageDrawable(context.getDrawable(search.getImagespecialty()));
         holder.searchcard.setOnClickListener(new View.OnClickListener() {

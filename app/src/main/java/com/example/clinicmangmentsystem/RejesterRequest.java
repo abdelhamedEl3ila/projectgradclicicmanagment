@@ -5,8 +5,9 @@ public class RejesterRequest {
     String email;
     String password;
     String mobile_number;
-    String gender;
     String photo;
+    String gender;
+
 
     public String getName() {
         return name;

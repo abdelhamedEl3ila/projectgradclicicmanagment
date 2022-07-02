@@ -8,5 +8,29 @@
     <string name="title_notifications">Notifications</string>
     <item name="cardviewnews" type="id" />
     <string name="new_line">\u000A</string>
+    <string name="title_activity_patient">PatientActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
 
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
+    <string-array name="blood_type">
+        <item>A</item>
+        <item>A+</item>
+        <item>B</item>
+        <item>B+</item>
+        <item>AB</item>
+        <item>O</item>
+        <item>O+</item>
+
+    </string-array>
+    <string-array name="Relation">
+        <item>Marred</item>
+        <item>Single</item>
+    </string-array>
 </resources>

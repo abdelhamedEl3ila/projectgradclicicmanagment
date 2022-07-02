@@ -11,6 +11,7 @@ import com.example.clinicmangmentsystem.model.ReviewModel;
 import com.example.clinicmangmentsystem.model.SelectDoctor;
 import com.example.clinicmangmentsystem.model.ShowAllReview;
 import com.example.clinicmangmentsystem.model.Showbooking;
+import com.example.clinicmangmentsystem.model.UpdeteUser;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -30,16 +31,16 @@ public interface interfaceServece {
             @Header( "Authorization" ) String token
     );
 
-    @GET("api/auth/getMedicalHistory")
-    Call<ModelMedical> getallmedical(
-            @Header( "Authorization" ) String token
-    );
+
     @POST("api/auth/addMedicalHistory")
     Call<MedicalResponse> storeallmedical(
             @Header( "Authorization" ) String token,
             @Body PostMedical postMedical
          );
-
+    @GET("api/auth/getMedicalHistory")
+    Call<ModelMedical> getallmedical(
+            @Header( "Authorization" ) String token
+    );
 
     @GET("api/auth/userProfile")
     Call<Editresponse> getuserprofile(
@@ -56,7 +57,7 @@ public interface interfaceServece {
     Call<SelectDoctor> selectdoc(
             @Header("Authorization") String token,
             @Path("id") int id,
-             @Query("day") String day);
+            @Query("day") String day);
 
 
     @GET("api/auth/bookedAppointments")
@@ -80,7 +81,17 @@ public interface interfaceServece {
     Call<ReviewModel> postreview(
             @Header( "Authorization" ) String token,
             @Path("id") int id,
-            @Query("content") String content,
-            @Query("rate") String rate
+           @Body ReviewModel reviewModel
+    );
+    @POST("api/auth/user/updateProfile/{id}")
+    Call<Editresponse> postupdate(
+            @Header( "Authorization" ) String token,
+            @Path("id") long id,
+            @Body UpdeteUser updateuser
+    );
+    @POST("api/auth/userlogout")
+    Call<User> logout(
+            @Header( "Authorization" ) String token
+
     );
 }

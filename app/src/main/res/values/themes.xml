@@ -19,11 +19,13 @@
         <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
+
     <style name="SearchViewTheme" parent="Widget.AppCompat.Light.SearchView">
         <item name="android:maxWidth">10000dp</item>
         <item name="android:textColorHint">@color/gray</item>
     </style>
-    <style name="CustomRatingBar" parent="@android:style/Widget.RatingBar" >
+
+    <style name="CustomRatingBar" parent="@android:style/Widget.RatingBar">
         <item name="android:numStars">5</item>
         <item name="android:stepSize">1.0</item>
         <item name="android:layout_width">wrap_content</item>
@@ -32,4 +34,13 @@
         <item name="android:layout_marginLeft">4dp</item>
         <item name="android:layout_marginTop">4dp</item>
     </style>
+
+    <style name="Theme.ClinicMangmentSystem.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.ClinicMangmentSystem.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.ClinicMangmentSystem.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

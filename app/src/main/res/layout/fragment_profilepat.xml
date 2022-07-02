@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,38 +8,36 @@
     android:background="@color/background"
     tools:context=".patient.ProfilepatFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <View
+        android:id="@+id/view2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-        <View
-            android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_65sdp"
-            android:background="@color/secondcolor"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+        android:layout_height="@dimen/_65sdp"
+        android:background="@color/secondcolor"
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Welcome"
-            android:textSize="@dimen/_20ssp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/view2"
-            app:layout_constraintEnd_toEndOf="@+id/view2"
-            app:layout_constraintHorizontal_bias="0.089"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.271" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:text="Welcome"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.28" />
+
+    <TextView
             android:id="@+id/usernametxtview1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,171 +52,148 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.279" />
 
-        <TextView
-            android:id="@+id/phonenumusertxtview1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="120dp"
-            android:text="Welcome"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_15ssp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/view2"
-            app:layout_constraintEnd_toEndOf="@+id/view2"
-            app:layout_constraintHorizontal_bias="0.13"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/phonenumusertxtview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginEnd="120dp"
+        android:text="Welcome"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/changelan"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:background="@drawable/customedittext"
+        android:drawableStart="@drawable/ic_language_svgrepo_com"
+        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+        android:drawablePadding="@dimen/_5sdp"
+        android:elevation="@dimen/_5sdp"
+        android:padding="@dimen/_7sdp"
+        android:paddingTop="@dimen/_6sdp"
+        android:text="Change Language"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="RtlCompat" />
+
+    <Button
+        android:id="@+id/ConnectUs"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:background="@drawable/customedittext"
+        android:drawableStart="@drawable/ic_wireless_connection_svgrepo_com"
+        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+        android:drawablePadding="@dimen/_5sdp"
+        android:elevation="@dimen/_5sdp"
+        android:padding="@dimen/_7sdp"
+        android:paddingTop="@dimen/_6sdp"
+        android:text="Connect Us"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changelan"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="RtlCompat" />
+
+    <Button
+        android:id="@+id/Rateus"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:background="@drawable/customedittext"
+        android:drawableStart="@drawable/ic_star_rate_svgrepo_com"
+        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+        android:drawablePadding="@dimen/_5sdp"
+        android:elevation="@dimen/_5sdp"
+        android:padding="@dimen/_7sdp"
+        android:paddingTop="@dimen/_6sdp"
+        android:text="Rate Us"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ConnectUs"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="RtlCompat" />
+
+    <Button
+        android:id="@+id/profile"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_gravity="center"
+        android:background="@drawable/customedittext"
+        android:drawableStart="@drawable/ic_person_svgrepo_com"
+        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+        android:drawablePadding="@dimen/_5sdp"
+        android:elevation="@dimen/_5sdp"
+        android:padding="@dimen/_7sdp"
+        android:paddingTop="@dimen/_6sdp"
+        android:text="User Information"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.051"
+        tools:ignore="RtlCompat" />
+
+    <Button
+        android:id="@+id/logoutbtn"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:background="@drawable/customedittext"
+        android:drawableStart="@drawable/ic_baseline_logout_24"
+        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+        android:drawablePadding="@dimen/_5sdp"
+        android:elevation="@dimen/_5sdp"
+        android:padding="@dimen/_7sdp"
+        android:paddingTop="@dimen/_6sdp"
+        android:text="Log Out"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Rateus"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="RtlCompat" />
 
 
-
-        <TextView
-            android:id="@+id/editprofiletxt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
-            android:layout_gravity="center"
-            android:background="@color/white"
-            android:layout_marginTop="@dimen/_15ssp"
-            android:drawableStart="@drawable/ic_baseline_person_24"
-            android:drawablePadding="@dimen/_5sdp"
-            android:padding="@dimen/_7sdp"
-            android:paddingLeft="@dimen/_10sdp"
-            android:paddingTop="@dimen/_6sdp"
-            android:text="Profile"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_15ssp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view2"
-            app:layout_constraintVertical_bias="0.044" />
-
-        <LinearLayout
-            android:layout_marginTop="@dimen/_2sdp"
-            android:id="@+id/line1"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_350sdp"
-            android:background="@drawable/customedittext"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.476"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editprofiletxt"
-            app:layout_constraintVertical_bias="0.0">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="User Name"
-                android:textColor="@color/gray"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:textSize="@dimen/_13ssp"
-                />
-            <EditText
-                android:id="@+id/fulluser"
-                android:layout_width="@dimen/_290sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:elevation="10dp"
-
-                android:background="@drawable/search"
-                android:layout_marginStart="@dimen/_15ssp"
-                android:textColor="@color/black"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PhoneNumber"
-                android:textColor="@color/gray"
-
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:textSize="@dimen/_13ssp"
-                />
-            <EditText
-                android:id="@+id/mobileedit"
-                android:layout_width="@dimen/_290sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:elevation="10dp"
-
-                android:background="@drawable/search"
-                android:layout_marginStart="@dimen/_15ssp"
-                android:textColor="@color/black"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Email"
-                android:textColor="@color/gray"
-
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:textSize="@dimen/_13ssp"
-                />
-            <EditText
-                android:id="@+id/emailedit"
-                android:layout_width="@dimen/_290sdp"
-                android:elevation="10dp"
-                android:layout_height="@dimen/_35sdp"
-                android:background="@drawable/search"
-                android:layout_marginStart="@dimen/_15ssp"
-                android:textColor="@color/black">
-            <requestFocus />
-        </EditText>
-
-            <Button
-                android:id="@+id/editprofile"
-                android:layout_width="@dimen/_300sdp"
-                android:layout_height="wrap_content"
-                android:text="Edit"
-                android:textSize="@dimen/_15ssp"
-                android:elevation="10dp"
-
-                android:textAllCaps="false"
-                android:textColor="@color/secondcolor"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_60sdp"
-                android:background="@drawable/cucstombtn2"/>
-            <Button
-                android:id="@+id/saveediyprofile"
-                android:layout_width="@dimen/_300sdp"
-                android:layout_height="wrap_content"
-                android:text="Save"
-                android:textSize="@dimen/_15ssp"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:background="@drawable/custombutton"/>
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/logoutbtn"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_3sdp"
-            android:background="@color/white"
-            android:drawableStart="@drawable/ic_baseline_logout_24"
-            android:drawablePadding="@dimen/_5sdp"
-            android:padding="@dimen/_7sdp"
-            android:paddingTop="@dimen/_6sdp"
-            android:text="Log Out"
-            android:textColor="@color/gray"
-            android:textSize="@dimen/_15ssp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/line1"
-            app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</ScrollView>

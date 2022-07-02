@@ -5,22 +5,14 @@ import java.util.List;
 import java.util.Map;
 
 public class ModelMedical {
-    private Getmedical data ;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private List<Getmedical> data ;
 
-    public Getmedical getData() {
+    public List<Getmedical> getData() {
         return data;
     }
 
-    public void setData(Getmedical data) {
+    public void setData(List<Getmedical> data) {
         this.data = data;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return additionalProperties;
     }
-
-    public void setAdditionalProperties(Map<String, Object> additionalProperties) {
-        this.additionalProperties = additionalProperties;
-    }
-}

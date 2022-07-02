@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -16,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ClinicMangmentSystem">
-
+        <activity
+            android:name=".patient.FristAidActivity"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -30,8 +33,11 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDwdx7d_z9bi8_lDk7wJ4L2Zc1IPq7Km0U" />
+            android:value="YOUR_API_KEY" />
 
+        <activity
+            android:name=".map.MapdocActivity"
+            android:exported="false" />
         <activity
             android:name=".SelectDoctorActivity"
             android:exported="false" />
@@ -83,6 +89,9 @@
             android:exported="true" />
         <activity
             android:name=".map.MapsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".patient.ProfilePatientActivity"
             android:exported="true" />
     </application>
 

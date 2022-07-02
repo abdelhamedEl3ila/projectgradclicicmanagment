@@ -1,34 +1,29 @@
 package com.example.clinicmangmentsystem.patient;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.car.ui.IFocusArea;
 import com.example.clinicmangmentsystem.ApiClientapp;
-import com.example.clinicmangmentsystem.LoginResponse;
+import com.example.clinicmangmentsystem.DetalisSearchActivity;
 import com.example.clinicmangmentsystem.R;
-import com.example.clinicmangmentsystem.adapter.NewsAdapter;
+import com.example.clinicmangmentsystem.User;
 import com.example.clinicmangmentsystem.model.Editresponse;
-import com.example.clinicmangmentsystem.model.Profile;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,51 +31,102 @@ import retrofit2.Response;
 
 
 public class ProfilepatFragment extends Fragment {
+    private Dialog dialogcall;
+TextView passwordshow , fullusername;
+Button openprofile;
+      private  Button Logout;
 
-TextView showprofile , fullusername;
-LinearLayout linprofile;
-EditText username;
-    EditText email;
-    EditText phonenumber;
-Button editprofile,saveedit;
-String token ;
+
 Context context;
+    private String token;
+
     public ProfilepatFragment() {
         // Required empty public constructor
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_profilepat, container, false);
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-linprofile=v.findViewById(R.id.line1);
-fullusername= v.findViewById(R.id.usernametxtview1);
-email=(EditText)v.findViewById(R.id.emailedit);
-phonenumber=(EditText)v.findViewById(R.id.mobileedit);
-username=(EditText)v.findViewById(R.id.fulluser);
-editprofile=v.findViewById(R.id.editprofile);
-saveedit=v.findViewById(R.id.saveediyprofile);
-        SharedPreferences preferences=getActivity().getSharedPreferences("Token", getActivity().MODE_PRIVATE);
-
+        openprofile=v.findViewById(R.id.profile);
+        fullusername=v.findViewById(R.id.usernametxtview1);
+        passwordshow=v.findViewById(R.id.phonenumusertxtview1);
+        SharedPreferences preferences=v.getContext().getSharedPreferences("Token", v.getContext().MODE_PRIVATE);
         token=preferences.getString("token",null);
-editprofile.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-//        username.setEnabled(true);
-//        email.setEnabled(true);
-//        phonenumber.setEnabled(true);
+        getdataprofile();
+
+        Logout=v.findViewById(R.id.logoutbtn);
+
+        dialogcall = new Dialog(v.getContext());
+        dialogcall.setContentView(R.layout.logoutdiolg);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            dialogcall.getWindow().setBackgroundDrawable(v.getContext().getDrawable(R.drawable.custom_dialog_background));
+        }
+        dialogcall.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialogcall.setCancelable(true); //Optional
+        dialogcall.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation; //Setting the animations to dialog
+        Button call = dialogcall.findViewById(R.id.btn_logout);
+        Button Cancel = dialogcall.findViewById(R.id.btn_cancellogout);
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Call<User> call1 = ApiClientapp.getservice().logout("Bearer "+token);
+                call1.enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if (response.isSuccessful())
+                        {
+                            Intent in = new Intent(v.getContext(), LoginActivity.class);
+                            v.getContext().startActivity(in);
+
+                        }
+                        else {
+                            String message ="error";
+                            Toast.makeText(v.getContext(),message,Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        String message = t.getLocalizedMessage();
+                        Toast.makeText(v.getContext(),message,Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+        });
+        Cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogcall.dismiss();
+            }
+        });
+        Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogcall.show();
+
+            }
+        });
+        openprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ProfilePatientActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+        return v;
     }
-});
-        showprofile=v.findViewById(R.id.editprofiletxt);
+
+
+
+
+
+
+    private void getdataprofile() {
         Call<Editresponse> call= ApiClientapp.getservice().getuserprofile("Bearer "+token);
         call.enqueue(new Callback<Editresponse>() {
             @Override
@@ -88,16 +134,9 @@ editprofile.setOnClickListener(new View.OnClickListener() {
 
                 if (response.isSuccessful() && response.body().getUser() != null) {
 
-                    username.setText(response.body().getUser().getName());
-                  fullusername.setText(response.body().getUser().getName());
-                phonenumber.setText(response.body().getUser().getMobile_number());
-                email.setText(response.body().getUser().getEmail());
+                    fullusername.setText(response.body().getUser().getName());
+                    passwordshow.setText(response.body().getUser().getMobile_number());
 
-                    SharedPreferences preferences = getActivity().getSharedPreferences("User",getActivity().MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("username",response.body().getUser().getName());
-                    editor.putString("phonenumber", response.body().getUser().getMobile_number());
-                    editor.commit();
 
                 }
             }
@@ -105,11 +144,10 @@ editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onFailure(Call<Editresponse> call, Throwable t) {
                 String message = t.getLocalizedMessage();
-                Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+                Toast.makeText(context.getApplicationContext(),message,Toast.LENGTH_SHORT).show();
 
             }
         });
-
-    return v;
     }
-}
+    }
+

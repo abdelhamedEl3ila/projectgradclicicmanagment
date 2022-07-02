@@ -1,48 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    android:layout_height="wrap_content">
-
-    <androidx.cardview.widget.CardView
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <View
+        android:id="@+id/view18"
         android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@color/secondcolor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/background"
-        android:layout_marginTop="@dimen/_3sdp"
-        android:id="@+id/searchcardview"
-        >
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/wrap_content"
-            android:background="@color/white"
+        android:text="Artificial Respiration"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view18"
+        app:layout_constraintEnd_toEndOf="@+id/view18"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="@+id/view18"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.363" />
 
-            >
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Artificial Respiration"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view18"
+        app:layout_constraintVertical_bias="0.027" />
 
-            <ImageView
-                android:id="@+id/specialtyicon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:src="@drawable/ic_frame_10" />
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Introduction"
+        android:textColor="@color/secondcolor"
+        android:textSize="@dimen/_11sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView35"
+        app:layout_constraintVertical_bias="0.014" />
 
-            <TextView
-                android:id="@+id/specialtytxt"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_marginStart="@dimen/_35sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/g_light"
-                android:text="paediatrics"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/_13ssp"
-                android:textStyle="bold"
-                />
-        </FrameLayout>
-    </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/textView37"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="wrap_content"
+        android:text="Administration of artificial respiration is one of the crucial aspects of first aid. The mouth-to-mouth and mouth-to-nose methods described here are simple enough to be mastered by anyone who takes the trouble to practice them before emergency necessitates their use. They are also considered by authorities more effective than other techniques."
+        android:textColor="@color/black"
+        android:textSize="@dimen/_11sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView36"
+        app:layout_constraintVertical_bias="0.018" />
+
+    <TextView
+        android:id="@+id/textView38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What to do:"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_11sdp"
+
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView37"
+        app:layout_constraintVertical_bias="0.055" />
 
 
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="wrap_content"
+        android:text="1- Stretch out victim on his back and kneel
+     close to his side. Loosen any tight
+     clothing around his neck or chest."
+        android:textColor="@color/black"
+        android:textSize="@dimen/_11sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView38"
+        app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="wrap_content"
+        android:text="2- Remove foreign objects if present from
+    victim's mouth and throat by finger
+    sweeping. If the patient seems to have
+    water or mucus in his throat or chest, tilt
+    him upside down or on his side to permit
+    such fluid to run out the mouth."
+        android:textColor="@color/black"
+        android:textSize="@dimen/_11sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text1"
+        app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="wrap_content"
+        android:text="
+3- Lift up chin and tilt head back as far as possible. If the head is not tilted, the tongue may block the throat. The tilting procedure should provide an open airway by moving the tongue away from the back of the throat. (Sometimes the victim will resume breathing as soon as this has been done.)."
+        android:textColor="@color/black"
+        android:textSize="@dimen/_11sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text2"
+        app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="wrap_content"
+        android:text="
+3- Lift up chin and tilt head back as far as possible. If the head is not tilted, the tongue may block the throat. The tilting procedure should provide an open airway by moving the tongue away from the back of the throat. (Sometimes the victim will resume breathing as soon as this has been done.)."
+        android:textColor="@color/black"
+        android:textSize="@dimen/_11sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text2"
+        app:layout_constraintVertical_bias="0.0" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/text4"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="wrap_content"
+        android:text="
+4- Begin the resuscitation immediately. Pinch the nostrils together with the thumb and index finger of the hand that is pressing on the victim's forehead. This prevents the loss of air through the nose during resuscitation"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_11sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text3"
+        app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/text5"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="wrap_content"
+        android:text="5- Inhale deeply."
+        android:textColor="@color/black"
+        android:textSize="@dimen/_11sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text4"
+        app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/text6"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="wrap_content"
+        android:text="6- Place your mouth tightly around the victim's mouth (over mouth and nose of small children) and blow into the air passage. Volume is important - deep breaths should be used for adults; less for children; for infants, gentle puffs (emptying the cheeks) should be sufficient. You should start at a high rate and then provide at least one breath every 5 seconds for adults and every 3 seconds for small children. Continue this maneuver so long as there is any pulse or heartbeat"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_11sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text5"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

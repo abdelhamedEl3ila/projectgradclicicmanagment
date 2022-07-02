@@ -1,8 +1,11 @@
 package com.example.clinicmangmentsystem.patient;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -45,6 +48,8 @@ public class ActivitypatFragment extends Fragment {
     Context context;
     String token;
     LinearLayout linearLayout;
+    private Dialog dialogcall;
+    private String phonenumber;
 private SwipeRefreshLayout swipeRefreshLayout;
 
 
@@ -89,6 +94,7 @@ getallbook();
                     schdulepats.clear();
                     schdulepats.addAll(response.body().getBookedAppointments());
 
+
                     adapter = new SchduleAdapter(getContext(), schdulepats);
 
                     recyclerView.setAdapter(adapter);
@@ -121,4 +127,6 @@ getallbook();
 
 
     }
+
+
 }

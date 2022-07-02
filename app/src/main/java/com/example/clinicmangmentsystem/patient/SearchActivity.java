@@ -101,7 +101,7 @@ public class SearchActivity extends AppCompatActivity {
         searchAdapter =new SearchAdapter(this,searches);
         recyclerView.setAdapter(searchAdapter);
         searches.add(new Search("Dentistry",R.drawable.ic_dentisticon));
-        searches.add(new Search("New Born ",R.drawable.ic_dentisticon));
+        searches.add(new Search("NewBorn ",R.drawable.ic_dentisticon));
         searches.add(new Search("Dentistry",R.drawable.ic_dentisticon));
         searches.add(new Search("Osteopathy",R.drawable.ic_paediatricsicon));
         searches.add(new Search("Paediatrics",R.drawable.ic_paediatricsicon));

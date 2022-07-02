@@ -7,7 +7,6 @@ public class PostMedical {
     String bloodType;
     String relationshipState;
     String diseases;
-
     public int getPatient_id() {
         return patient_id;
     }

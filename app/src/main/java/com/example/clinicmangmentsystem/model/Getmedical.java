@@ -5,8 +5,8 @@ import java.util.Date;
 public class Getmedical {
     private int id;
     private int patientID;
-    private int height;
-    private int weight;
+    private String height;
+    private String weight;
     private String bloodType;
     private String relationshipState;
     private String diseases;
@@ -29,19 +29,19 @@ public class Getmedical {
         this.patientID = patientID;
     }
 
-    public int getHeight() {
+    public String getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
-    public int getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 
